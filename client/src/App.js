@@ -3,7 +3,6 @@ import React from "react";
 import Signup from "./components/nav/Signup";
 import Nav from "./components/nav/Nav";
 import GlobalStyles from "./GlobalStyles";
-
 // import Cal from "./components/calendar/Calender";
 
 class App extends React.Component {
@@ -19,6 +18,7 @@ class App extends React.Component {
         <Nav />
         {/* <Login /> */}
         <Signup />
+        {/* <Cal></Cal> */}
       </>
     );
   }
