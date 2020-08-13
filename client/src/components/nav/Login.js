@@ -79,7 +79,6 @@ const login = () => (
         <Inputpassword />
         <Span></Span>
       </FormInput>
-
       <Button>Send</Button>
     </Form>
   </Wrap>
