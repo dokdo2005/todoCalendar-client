@@ -1,14 +1,27 @@
-import React from 'react';
-import Cal from "./components/calendar/Calender";
-import Nav from './components/nav/Nav'
+import React from "react";
+// import Login from "./components/nav/Login";
+import Signup from "./components/nav/Signup";
+import Nav from "./components/nav/Nav";
+import GlobalStyles from "./GlobalStyles";
+// import Cal from "./components/calendar/Calender";
 
-function App() {
-  return (
-    <div className="App">
-      <Nav></Nav>
-        <Cal></Cal>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    return (
+      <>
+        <GlobalStyles />
+        <Nav />
+        {/* <Login /> */}
+        <Signup />
+        {/* <Cal></Cal> */}
+      </>
+    );
+  }
 }
 
 export default App;
