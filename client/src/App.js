@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
+import Cal from "./components/calendar/Calender";
 import './App.css';
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
           Learn React
         </a>
       </header>
+      {/* 아래 캘린더 */}
+      <Cal></Cal>
     </div>
   );
 }
