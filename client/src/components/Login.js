@@ -45,6 +45,7 @@ const Labelpassword = styled.label.attrs({
 `;
 
 const Inputpassword = styled.input.attrs({
+  id: 'password',
   type: "password",
   placeholder: "password을 입력해주세요",
 })`
@@ -65,7 +66,7 @@ const Button = styled.button`
   }
 `;
 
-const login = () => (
+const Login = ({idInputValue, passwordInputValue}) => (
   <Wrap>
     <Title>Login</Title>
     <Form>
@@ -84,4 +85,4 @@ const login = () => (
   </Wrap>
 );
 
-export default login;
+export default Login;
