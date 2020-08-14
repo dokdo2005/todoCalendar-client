@@ -66,21 +66,21 @@ const Button = styled.button`
   }
 `;
 
-const Login = ({idInputValue, passwordInputValue}) => (
+const Login = ({emailInputValue, passwordInputValue, handleLogin, inputValueChangeHandler}) => (
   <Wrap>
     <Title>Login</Title>
     <Form>
       <FormInput>
         <Labelemail>E-mail : </Labelemail>
-        <Inputemail />
+        <Inputemail onChange={inputValueChangeHandler} value={emailInputValue} />
         <Span></Span>
       </FormInput>
       <FormInput>
         <Labelpassword>Password : </Labelpassword>
-        <Inputpassword />
+        <Inputpassword onChange={inputValueChangeHandler} value={passwordInputValue}/>
         <Span></Span>
       </FormInput>
-      <Button>Send</Button>
+      <Button onClick={(e) => {e.preventDefault(); handleLogin(); }}>Send</Button>
     </Form>
   </Wrap>
 );
