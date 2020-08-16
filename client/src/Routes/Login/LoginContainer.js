@@ -10,7 +10,6 @@ export default class LoginContainer extends Component{
     }
   }
 
-
   inputValueChangeHandler(e){
     this.setState({
       [e.target.type + `InputValue`]: e.target.value
@@ -22,7 +21,11 @@ export default class LoginContainer extends Component{
     return (
       <>
         <LoginPresenter 
-          handleLogin={handleLogin}
+          handleLogin={
+            () => {
+              handleLogin(emailInputValue,passwordInputValue)
+            }
+          }
           inputValueChangeHandler = {this.inputValueChangeHandler.bind(this)}  
           emailInputValue = {emailInputValue}
           passwordInputValue = {passwordInputValue}

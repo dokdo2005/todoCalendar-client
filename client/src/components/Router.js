@@ -7,8 +7,7 @@ import {
 } from "react-router-dom";
 import Nav from "./Nav";
 import Cal from "./Calender";
-import Signup from "./Signup";
-
+import Signup from "../Routes/Signup";
 import LoginContainer from "../Routes/Login";
 
 
@@ -25,7 +24,9 @@ export default ({ handleLogin, isLogin }) => (
 
         <Route path='/login'>
           {
-            isLogin ?  <Redirect to='/'/> : <LoginContainer handleLogin={handleLogin} />
+            isLogin ?  
+            <Redirect to='/'/> : 
+            <LoginContainer handleLogin={handleLogin} />
           }
         </Route>
         <Route path='/signup'>

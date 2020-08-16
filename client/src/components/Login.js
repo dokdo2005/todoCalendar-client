@@ -25,7 +25,7 @@ const Span = styled.span`
 `;
 
 const Labelemail = styled.label.attrs({
-  for: "email",
+  htmlFor: "email",
 })`
   font-size: 20px;
 `;
@@ -39,7 +39,7 @@ const Inputemail = styled.input.attrs({
 `;
 
 const Labelpassword = styled.label.attrs({
-  for: "password",
+  htmlFor: "password",
 })`
   font-size: 20px;
 `;
@@ -66,21 +66,31 @@ const Button = styled.button`
   }
 `;
 
-const Login = ({emailInputValue, passwordInputValue, handleLogin, inputValueChangeHandler}) => (
+const Login = ({ emailInputValue, passwordInputValue, handleLogin, inputValueChangeHandler }) => (
   <Wrap>
     <Title>Login</Title>
     <Form>
       <FormInput>
         <Labelemail>E-mail : </Labelemail>
-        <Inputemail onChange={inputValueChangeHandler} value={emailInputValue} />
+        <Inputemail
+          onChange={inputValueChangeHandler}
+          value={emailInputValue} />
         <Span></Span>
       </FormInput>
       <FormInput>
         <Labelpassword>Password : </Labelpassword>
-        <Inputpassword onChange={inputValueChangeHandler} value={passwordInputValue}/>
+        <Inputpassword
+          onChange={inputValueChangeHandler}
+          value={passwordInputValue}/>
         <Span></Span>
       </FormInput>
-      <Button onClick={(e) => {e.preventDefault(); handleLogin(); }}>Send</Button>
+      <Button onClick={
+        (e) => {
+          e.preventDefault();
+          handleLogin();
+        }}>
+        Send
+      </Button>
     </Form>
   </Wrap>
 );

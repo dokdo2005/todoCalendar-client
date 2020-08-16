@@ -26,7 +26,7 @@ const Span = styled.span`
 `;
 
 const Labelname = styled.label.attrs({
-  for: "name",
+  htmlFor: "name",
 })`
   font-size: 20px;
 `;
@@ -42,7 +42,7 @@ const Inputname = styled.input.attrs({
 `;
 
 const Labelemail = styled.label.attrs({
-  for: "email",
+  htmlFor: "email",
 })`
   font-size: 20px;
 `;
@@ -58,7 +58,7 @@ const Inputemail = styled.input.attrs({
 `;
 
 const Labelpassword = styled.label.attrs({
-  for: "password",
+  htmlFor: "password",
 })`
   font-size: 20px;
 `;
@@ -74,7 +74,7 @@ const Inputpassword = styled.input.attrs({
 `;
 
 const Labelpasswordcheck = styled.label.attrs({
-  for: "passwordcheck",
+  htmlFor: "passwordcheck",
 })`
   font-size: 20px;
 `;
