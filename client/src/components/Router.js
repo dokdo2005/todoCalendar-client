@@ -6,13 +6,20 @@ import {
   Redirect,
 } from "react-router-dom";
 import Nav from "./Nav";
-import Cal from "./Calender";
+// import Cal from "./Calender";
 import Signup from "../Routes/Signup";
 import LoginContainer from "../Routes/Login";
+import Todo from "../Routes/Todo";
 import PageSection from "./PageSection";
 
-
-export default ({ userData, handleLogin, handleLogout, isLogin, isUserProfileModalVisible, handleUserProfileModal }) => (
+export default ({
+  userData,
+  handleLogin,
+  handleLogout,
+  isLogin,
+  isUserProfileModalVisible,
+  handleUserProfileModal,
+}) => (
   <Router>
     <>
       <Nav
@@ -24,16 +31,14 @@ export default ({ userData, handleLogin, handleLogout, isLogin, isUserProfileMod
       />
       <Switch>
         <Route exact path="/">
-          <PageSection>
-            <Cal></Cal>
-          </PageSection>
+          <PageSection>{/* <Cal></Cal> */}</PageSection>
         </Route>
-        <Route path='/login'>
-          {
-            isLogin ?
-              <Redirect to='/' /> :
-              <LoginContainer handleLogin={handleLogin} />
-          }
+        <Route path="/login">
+          {isLogin ? (
+            <Redirect to="/" />
+          ) : (
+            <LoginContainer handleLogin={handleLogin} />
+          )}
         </Route>
         <Route path="/signup">
           <Signup></Signup>
