@@ -12,7 +12,7 @@ export const userApi = {
       password
     })),
   //로그아웃
-  logout: () => (api.get(`/logout`)),
+  logout: () => (api.post(`/logout`)),
   //회원가입
   signup: (username, email, password) => (
     api.post(`/signup`, {
