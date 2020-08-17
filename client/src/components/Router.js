@@ -11,17 +11,20 @@ import Signup from "../Routes/Signup";
 import LoginContainer from "../Routes/Login";
 
 
-export default ({ handleLogin, isLogin }) => (
+export default ({userData, handleLogin, handleLogout, isLogin, isUserProfileModalVisible, handleUserProfileModal}) => (
   <Router>
     <>
-      <Nav
+      <Nav 
         isLogin={isLogin}
-        />
+        isUserProfileModalVisible= {isUserProfileModalVisible}
+        handleUserProfileModal = {handleUserProfileModal}
+        handleLogout= {handleLogout}
+        userData = {userData}
+       />
       <Switch>
         <Route exact path='/' >
           <Cal></Cal>
         </Route>
-
         <Route path='/login'>
           {
             isLogin ?  
