@@ -45,6 +45,9 @@ const LogoutBtn = styled(Link)`
     color: rgba(40, 152, 0);
   }
   `;
+const EditBtn = styled.div`
+  float:right;
+`
 
 export default ({ isUserProfileModalVisible, handleLogout, userData }) => {
   const { email, username } = userData;
@@ -55,7 +58,8 @@ export default ({ isUserProfileModalVisible, handleLogout, userData }) => {
         isUserProfileModalVisible ?
           <UserInfoModal>
             <UserInfoWrapper>
-              <UserImg useFor = {`modal`}src={"https://lh3.googleusercontent.com/ogw/ADGmqu_-n8nrFWm-MpZHy54krYtwVgLmBamnKrqNWfcu=s32-c-mo"}/ >
+              <EditBtn>ㅎ</EditBtn>
+              <UserImg useFor={`modal`} src={"https://lh3.googleusercontent.com/ogw/ADGmqu_-n8nrFWm-MpZHy54krYtwVgLmBamnKrqNWfcu=s32-c-mo"} />
               <Username>{username}</Username>
               <UserEmail>{email}</UserEmail>
               <LogoutBtn to={`/`} onClick={handleLogout}>로그아웃</LogoutBtn>
