@@ -2,14 +2,14 @@ import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
 const globalStyles = createGlobalStyle`
-    ${reset};
+${reset};
     li{
         text-decoration:none;
     }
     a{
         text-decoration:none;
         color:inherit;
-    }
+    }		
     *{
         box-sizing:border-box;
         margin:0;

@@ -6,9 +6,8 @@ import {
   Redirect,
 } from "react-router-dom";
 import Nav from "./Nav";
-// import Cal from "./Calender";
+import Cal from "./Calender";
 import Signup from "../Routes/Signup";
-
 import LoginContainer from "../Routes/Login";
 
 export default ({ handleLogin, isLogin }) => (

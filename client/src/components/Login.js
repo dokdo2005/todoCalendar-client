@@ -25,7 +25,7 @@ const Span = styled.span`
 `;
 
 const Labelemail = styled.label.attrs({
-  for: "email",
+  htmlFor: "email",
 })`
   font-size: 20px;
 `;
@@ -39,7 +39,7 @@ const Inputemail = styled.input.attrs({
 `;
 
 const Labelpassword = styled.label.attrs({
-  for: "password",
+  htmlFor: "password",
 })`
   font-size: 20px;
 `;

@@ -11,12 +11,6 @@ const NavBar = styled.nav`
   top: 0%;
   z-index: 289;
 `;
-// const Welcome = styled.div`
-//   float: left;
-//   font-weight: bold;
-//   font-size: 25px;
-//   padding: 5.5px 10px;
-// `;
 const UserBtn = styled(Link)`
   color: black;
   margin: 0 10px;
@@ -48,8 +42,15 @@ const HomeBtn = styled.img`
   width: 60px;
 `;
 
-export default function Nav({ isLogin }) {
-  // const tempIsLogin = false;
+const UserInfoModal = styled.div`
+  width: 250px;
+  height: 200px;
+  background: red;
+  position: fixed;
+  top: 50px;
+  right: 20px;
+`;
+export default function Nav({ isLogin, userData }) {
   const tempUserImgsrc =
     "https://lh3.googleusercontent.com/ogw/ADGmqu_-n8nrFWm-MpZHy54krYtwVgLmBamnKrqNWfcu=s32-c-mo";
   // 이미지 결정하고 수정해야함
@@ -62,8 +63,9 @@ export default function Nav({ isLogin }) {
           <HomeBtn src={homeBtnSrc} />
         </Link>
         <NavItemWrapper>
+          {/* <UserInfoModal></UserInfoModal> */}
           {isLogin ? (
-            <UserInfoBtn src={tempUserImgsrc} />
+            <UserInfoBtn src={tempUserImgsrc}></UserInfoBtn>
           ) : (
             <>
               <UserBtn to="/signup">회원가입</UserBtn>
