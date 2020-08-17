@@ -7,18 +7,18 @@ const Container = styled.div``;
 const Section = styled.div``;
 
 const Clock = () => (
-  <Container>
-    <Section>
-      <Timer
-        format={"YYYY 년 MM 월 DD 일 "}
-        ticking={true}
-        timezone={"US/Pacific"}
-      />
-    </Section>
-    <Section>
-      <Timer format={"HH 시 mm 분"} ticking={true} timezone={"US/Pacific"} />
-    </Section>
-  </Container>
+    <Container>
+        <Section>
+            <Timer
+                format={"YYYY 년 MM 월 DD 일 "}
+                ticking={true}
+                timezone={"Asia/Seoul"}
+            />
+        </Section>
+        <Section>
+            <Timer format={"HH 시 mm 분"} ticking={true} timezone={"Asia/Seoul"} />
+        </Section>
+    </Container>
 );
 
 export default Clock;
