@@ -7,7 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Container = styled.section``;
+const Container = styled.div``;
 
 const Form = styled.form`
   display: flex;
