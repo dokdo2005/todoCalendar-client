@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import Title from '../../components/Title'
 const Wrap = styled.div`
   width: 100%;
   height: 100%;
@@ -9,10 +9,7 @@ const Wrap = styled.div`
   padding-top: 2vh;
 `;
 
-const Title = styled.h1`
-  font-size: 76px;
-  padding: 100px 0px 30px 0px;
-`;
+
 
 const Form = styled.form``;
 
@@ -111,7 +108,7 @@ const SignupPresenter = ({
   SubmitBtn,
 }) => (
   <Wrap>
-    <Title>Signup</Title>
+    <Title titleName={`Signup`}/>
     <Form>
       <FormInput>
         <Labelname>name : </Labelname>

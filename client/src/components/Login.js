@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Title from "./Title";
 
 const Wrap = styled.div`
   width: 100%;
@@ -7,11 +8,6 @@ const Wrap = styled.div`
   margin-top: 50px;
   text-align: center;
   padding-top: 100px;
-`;
-
-const Title = styled.h1`
-  font-size: 76px;
-  padding: 100px 0px 30px 0px;
 `;
 
 const Form = styled.form``;
@@ -73,7 +69,7 @@ const Login = ({
   inputValueChangeHandler,
 }) => (
   <Wrap>
-    <Title>Login</Title>
+    <Title titleName={`Login`}/>
     <Form>
       <FormInput>
         <Labelemail>E-mail : </Labelemail>
