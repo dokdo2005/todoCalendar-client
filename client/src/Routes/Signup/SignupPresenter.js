@@ -108,6 +108,7 @@ const SignupPresenter = ({
   checkMessageEmail,
   checkMessagePassword,
   checkMessagePasswordcheck,
+  SubmitBtn,
 }) => (
   <Wrap>
     <Title>Signup</Title>
@@ -132,7 +133,7 @@ const SignupPresenter = ({
         <Inputpasswordcheck onChange={handleChange} />
         <Span>{checkMessagePasswordcheck}</Span>
       </FormInput>
-      <Button>Send</Button>
+      <Button onClick={SubmitBtn}>Send</Button>
     </Form>
   </Wrap>
 );

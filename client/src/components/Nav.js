@@ -11,13 +11,13 @@ const NavBar = styled.nav`
   top: 0%;
   z-index: 289;
 `;
-
 const UserBtn = styled(Link)`
   color: black;
   margin: 0 10px;
   float: right;
   font-weight: bold;
   font-size: 25px;
+  line-height: 1.5;
   :hover {
     color: rgba(40, 152, 0);
   }
@@ -37,10 +37,10 @@ const UserInfoBtn = styled.img`
 
 const HomeBtn = styled.img`
   border-radius: 50%;
-  float:left;
+  float: left;
   padding: 2px 10px;
   width: 60px;
-`
+`;
 
 const UserInfoModal = styled.div`
   width: 250px;
@@ -49,8 +49,8 @@ const UserInfoModal = styled.div`
   position: fixed;
   top: 50px;
   right: 20px;
-`
-export default function Nav({isLogin, userData}) {
+`;
+export default function Nav({ isLogin, userData }) {
   const tempUserImgsrc =
     "https://lh3.googleusercontent.com/ogw/ADGmqu_-n8nrFWm-MpZHy54krYtwVgLmBamnKrqNWfcu=s32-c-mo";
   // 이미지 결정하고 수정해야함
@@ -59,22 +59,19 @@ export default function Nav({isLogin, userData}) {
   return (
     <>
       <NavBar>
-        <Link to={'/'}>
+        <Link to={"/"}>
           <HomeBtn src={homeBtnSrc} />
         </Link>
         <NavItemWrapper>
           {/* <UserInfoModal></UserInfoModal> */}
-          {
-            isLogin ? (
-              <UserInfoBtn 
-                src={tempUserImgsrc}> 
-              </UserInfoBtn>
-            ) : (
-              <>
-                <UserBtn to="/signup" >회원가입</UserBtn>
-                <UserBtn to="/login" >로그인</UserBtn>
-              </>
-            )}
+          {isLogin ? (
+            <UserInfoBtn src={tempUserImgsrc}></UserInfoBtn>
+          ) : (
+            <>
+              <UserBtn to="/signup">회원가입</UserBtn>
+              <UserBtn to="/login">로그인</UserBtn>
+            </>
+          )}
         </NavItemWrapper>
       </NavBar>
       <NavBlackFiller></NavBlackFiller>
