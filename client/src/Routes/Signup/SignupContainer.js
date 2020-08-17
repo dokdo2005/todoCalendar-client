@@ -1,5 +1,6 @@
 import React from "react";
 import SignupPresenter from "./SignupPresenter";
+import { userApi } from "../../api";
 
 export default class extends React.Component {
   constructor(props) {
@@ -8,11 +9,11 @@ export default class extends React.Component {
       inputname: null,
       inputemail: null,
       inputpassword: null,
-      inputpasswordcheck: null,
       checkMessageName: null,
       checkMessageEmail: null,
       checkMessagePassword: null,
       checkMessagePasswordcheck: null,
+      errorMessage: null,
     };
   }
 
@@ -92,14 +93,25 @@ export default class extends React.Component {
 
   SubmitBtn(e) {
     e.preventDefault();
-    console.log("send");
+
     const { inputname, inputemail, inputpassword } = this.state;
 
-    //axios.post() 로 서버에 데이터를 보낸다
-    //axios.post().then(서버에서 200이 넘어오면 로그인페이지로 redirect)
-    //this.props.history.push('/login');
-    //.catch(오류발생시 alert로 재회원가입요청);
-    //console.log(error);
+    try {
+      if (inputname !== null && inputemail !== null && inputpassword !== null) {
+        console.log("enter");
+        userApi.signup(inputname, inputemail, inputpassword).then((res) => {
+          if (res.status === 409) {
+            alert("이미 존재하는 계정입니다.");
+          } else if (res.status === 200) {
+            console.log("200");
+            console.log(this.props);
+            this.props.history.push("/login");
+          }
+        });
+      }
+    } catch {
+      this.setState({ error: "Can't SignUp" });
+    }
   }
 
   render() {

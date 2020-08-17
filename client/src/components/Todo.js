@@ -8,9 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Container = styled.section`
-  align-content: center;
-`;
+const Container = styled.div``;
 
 const Form = styled.form`
   display: flex;
@@ -60,7 +58,9 @@ const Todo = () => (
     </Form>
     <Form>
       <BottomBtn>
-        Clear<br />All
+        Clear
+        <br />
+        All
       </BottomBtn>
       <BottomBtn>
         <FontAwesomeIcon icon={faPlus} />

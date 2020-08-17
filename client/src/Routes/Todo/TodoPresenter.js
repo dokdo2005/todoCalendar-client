@@ -4,7 +4,7 @@ import Clock from "../../components/Clock";
 import Todo from "../../components/Todo";
 import AddTodo from "../../components/AddTodo";
 
-const Container = styled.section`
+const Container = styled.div`
   width: 100%;
   height: 100%;
   /* background-color: red; */

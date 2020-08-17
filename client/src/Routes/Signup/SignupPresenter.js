@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import Title from '../../components/Title'
+import Title from "../../components/Title";
+import { Link } from "react-router-dom";
+
 const Wrap = styled.div`
   width: 100%;
   height: 100%;
@@ -84,7 +86,7 @@ const Inputpasswordcheck = styled.input.attrs({
   font-size: 15px;
 `;
 
-const Button = styled.button`
+const SignupBtn = styled.button`
   border-radius: 4%;
   background-color: #62ab3f;
   color: white;
@@ -106,7 +108,7 @@ const SignupPresenter = ({
   SubmitBtn,
 }) => (
   <Wrap>
-    <Title titleName={`Signup`}/>
+    <Title titleName={`Signup`} />
     <Form>
       <FormInput>
         <Labelname>name : </Labelname>
@@ -128,7 +130,14 @@ const SignupPresenter = ({
         <Inputpasswordcheck onChange={handleChange} />
         <Span>{checkMessagePasswordcheck}</Span>
       </FormInput>
-      <Button onClick={SubmitBtn}>Send</Button>
+      <SignupBtn
+        onSubmit={(e) => {
+          e.preventDefault();
+          SubmitBtn(e);
+        }}
+      >
+        Send
+      </SignupBtn>
     </Form>
   </Wrap>
 );

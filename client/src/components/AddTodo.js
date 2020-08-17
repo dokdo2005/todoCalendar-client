@@ -66,7 +66,6 @@ const SendBtn = styled.button`
   background-color: #62ab3f;
   color: white;
   padding: 10px 25px;
-  margin-left: 300px;
   font-size: 20px;
   :hover {
     background-color: #007349;
