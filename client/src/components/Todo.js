@@ -4,6 +4,7 @@ import {
   faCaretDown,
   faEdit,
   faTrashAlt,
+  faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -31,6 +32,14 @@ const Icon = styled.a`
   margin: 0px 0px 0px 15px;
 `;
 
+const BottomBtn = styled.button`
+  margin: 0px 0px 0px 10px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: lightgrey;
+`;
+
 const Todo = () => (
   <Container>
     <Form>
@@ -46,6 +55,16 @@ const Todo = () => (
       <Icon>
         <FontAwesomeIcon icon={faTrashAlt} />
       </Icon>
+    </Form>
+    <Form>
+      <BottomBtn>
+        Clear
+        <br />
+        All
+      </BottomBtn>
+      <BottomBtn>
+        <FontAwesomeIcon icon={faPlus} />
+      </BottomBtn>
     </Form>
   </Container>
 );
