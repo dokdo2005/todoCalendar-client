@@ -3,11 +3,7 @@ import 'antd/dist/antd.css';
 import styled from "styled-components";
 import { Calendar } from 'antd';
 
-// const Section = styled.section`
-//   border: 1px solid black;
-//   width:80%;
-//   margin: 10px auto;
-// `
+
 const MoreBtn = styled.div`
   text-align:center;
   background-color:lightgray;

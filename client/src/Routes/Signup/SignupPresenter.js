@@ -9,8 +9,6 @@ const Wrap = styled.div`
   padding-top: 2vh;
 `;
 
-
-
 const Form = styled.form``;
 
 const FormInput = styled.div`
