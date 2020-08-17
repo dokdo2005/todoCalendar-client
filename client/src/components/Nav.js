@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import UserProfileModal from "./UserProfileModal";
+import UserImg from "./UserProfileImg";
+
 
 const NavBar = styled.nav`
   background-color: rgba(40, 152, 0, 0.17);
@@ -30,10 +33,6 @@ const NavBlackFiller = styled.div`
   height: 50px;
 `;
 
-const UserInfoBtn = styled.img`
-  margin: 3px 10px;
-  border-radius: 100%;
-`;
 
 const HomeBtn = styled.img`
   border-radius: 50%;
@@ -42,15 +41,7 @@ const HomeBtn = styled.img`
   width: 60px;
 `;
 
-const UserInfoModal = styled.div`
-  width: 250px;
-  height: 200px;
-  background: red;
-  position: fixed;
-  top: 50px;
-  right: 20px;
-`;
-export default function Nav({ isLogin, userData }) {
+export default function Nav({ isLogin, handleLogout, userData, isUserProfileModalVisible, handleUserProfileModal }) {
   const tempUserImgsrc =
     "https://lh3.googleusercontent.com/ogw/ADGmqu_-n8nrFWm-MpZHy54krYtwVgLmBamnKrqNWfcu=s32-c-mo";
   // 이미지 결정하고 수정해야함
@@ -63,15 +54,26 @@ export default function Nav({ isLogin, userData }) {
           <HomeBtn src={homeBtnSrc} />
         </Link>
         <NavItemWrapper>
-          {/* <UserInfoModal></UserInfoModal> */}
-          {isLogin ? (
-            <UserInfoBtn src={tempUserImgsrc}></UserInfoBtn>
-          ) : (
-            <>
-              <UserBtn to="/signup">회원가입</UserBtn>
-              <UserBtn to="/login">로그인</UserBtn>
-            </>
-          )}
+          {
+            isLogin ? (
+              <>
+                <UserImg 
+                  useFor = {`navBar`}
+                  src = {tempUserImgsrc}
+                  handleUserProfileModal={handleUserProfileModal}
+                ></UserImg>
+                <UserProfileModal
+                  isUserProfileModalVisible={isUserProfileModalVisible}
+                  userData={userData}
+                  handleLogout={handleLogout}
+                />
+              </>
+            ) : (
+              <>
+                  <UserBtn to="/signup" >회원가입</UserBtn>
+                  <UserBtn to="/login" >로그인</UserBtn>
+                </>
+              )}
         </NavItemWrapper>
       </NavBar>
       <NavBlackFiller></NavBlackFiller>
