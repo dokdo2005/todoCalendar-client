@@ -1,7 +1,7 @@
 import React from "react";
 import GlobalStyles from "./GlobalStyles";
 import Router from "./Router";
-import {userApi} from "../api";
+import { userApi } from "../api";
 
 class App extends React.Component {
   constructor(props) {
@@ -9,16 +9,16 @@ class App extends React.Component {
     this.state = {
       isLogin: false,
       isUserProfileModalVisible: false,
-      userData:{
+      userData: {
         userId: null,
         email: null,
         username: null,
-      }
+      },
     };
   }
 
   handleLogin = async (email, password) => {
-    const userData = await userApi.login(email,password);
+    const userData = await userApi.login(email, password);
 
     this.setState({
       isLogin: !this.state.isLogin,

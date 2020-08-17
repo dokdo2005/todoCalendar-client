@@ -14,14 +14,13 @@ const NavBar = styled.nav`
   top: 0%;
   z-index: 289;
 `;
-
 const UserBtn = styled(Link)`
   color: black;
   margin: 0 10px;
   float: right;
   font-weight: bold;
   font-size: 25px;
-  padding: 6px 0;
+  line-height: 1.5;
   :hover {
     color: rgba(40, 152, 0);
   }
@@ -34,17 +33,13 @@ const NavBlackFiller = styled.div`
   height: 50px;
 `;
 
-const UserInfoBtn = styled.img`
-  margin: 3px 10px;
-  border-radius: 100%;
-`;
 
 const HomeBtn = styled.img`
   border-radius: 50%;
-  float:left;
+  float: left;
   padding: 2px 10px;
   width: 60px;
-`
+`;
 
 export default function Nav({ isLogin, handleLogout, userData, isUserProfileModalVisible, handleUserProfileModal }) {
   const tempUserImgsrc =
@@ -55,7 +50,7 @@ export default function Nav({ isLogin, handleLogout, userData, isUserProfileModa
   return (
     <>
       <NavBar>
-        <Link to={'/'}>
+        <Link to={"/"}>
           <HomeBtn src={homeBtnSrc} />
         </Link>
         <NavItemWrapper>

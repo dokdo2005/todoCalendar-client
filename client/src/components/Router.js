@@ -22,8 +22,8 @@ export default ({userData, handleLogin, handleLogout, isLogin, isUserProfileModa
         userData = {userData}
        />
       <Switch>
-        <Route exact path='/' >
-          <Cal></Cal>
+        <Route exact path="/">
+          {/* <Cal></Cal> */}
         </Route>
         <Route path='/login'>
           {
@@ -32,10 +32,10 @@ export default ({userData, handleLogin, handleLogout, isLogin, isUserProfileModa
             <LoginContainer handleLogin={handleLogin} />
           }
         </Route>
-        <Route path='/signup'>
+        <Route path="/signup">
           <Signup></Signup>
         </Route>
       </Switch>
     </>
   </Router>
-)
+);

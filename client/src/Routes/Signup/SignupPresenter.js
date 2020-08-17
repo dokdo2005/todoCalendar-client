@@ -98,7 +98,7 @@ const Button = styled.button`
   font-size: 20px;
   :hover {
     background-color: #007349;
-    box-shadow: 0.5px 3px 2px 2px rgba(0, 0, 255, 0.2);
+    box-shadow: 2px 2.5px 2.5px 2.5px rgba(0, 0, 0, 0.2);
   }
 `;
 
@@ -108,6 +108,7 @@ const SignupPresenter = ({
   checkMessageEmail,
   checkMessagePassword,
   checkMessagePasswordcheck,
+  SubmitBtn,
 }) => (
   <Wrap>
     <Title>Signup</Title>
@@ -132,7 +133,7 @@ const SignupPresenter = ({
         <Inputpasswordcheck onChange={handleChange} />
         <Span>{checkMessagePasswordcheck}</Span>
       </FormInput>
-      <Button>Send</Button>
+      <Button onClick={SubmitBtn}>Send</Button>
     </Form>
   </Wrap>
 );

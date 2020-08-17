@@ -45,7 +45,7 @@ const Labelpassword = styled.label.attrs({
 `;
 
 const Inputpassword = styled.input.attrs({
-  id: 'password',
+  id: "password",
   type: "password",
   placeholder: "password을 입력해주세요",
 })`
@@ -62,11 +62,16 @@ const Button = styled.button`
   font-size: 20px;
   :hover {
     background-color: #007349;
-    box-shadow: 0.5px 3px 2px 2px rgba(0, 0, 255, 0.2);
+    box-shadow: 2px 2.5px 2.5px 2.5px rgba(0, 0, 0, 0.2);
   }
 `;
 
-const Login = ({ emailInputValue, passwordInputValue, handleLogin, inputValueChangeHandler }) => (
+const Login = ({
+  emailInputValue,
+  passwordInputValue,
+  handleLogin,
+  inputValueChangeHandler,
+}) => (
   <Wrap>
     <Title>Login</Title>
     <Form>
@@ -74,21 +79,24 @@ const Login = ({ emailInputValue, passwordInputValue, handleLogin, inputValueCha
         <Labelemail>E-mail : </Labelemail>
         <Inputemail
           onChange={inputValueChangeHandler}
-          value={emailInputValue} />
+          value={emailInputValue}
+        />
         <Span></Span>
       </FormInput>
       <FormInput>
         <Labelpassword>Password : </Labelpassword>
         <Inputpassword
           onChange={inputValueChangeHandler}
-          value={passwordInputValue}/>
+          value={passwordInputValue}
+        />
         <Span></Span>
       </FormInput>
-      <Button onClick={
-        (e) => {
+      <Button
+        onClick={(e) => {
           e.preventDefault();
           handleLogin();
-        }}>
+        }}
+      >
         Send
       </Button>
     </Form>
