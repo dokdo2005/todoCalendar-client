@@ -1,4 +1,7 @@
 import React from "react";
+import styled from "styled-components";
+
+const Container = styled.div``;
 
 export class Clock extends React.Component {
     constructor(props) {
@@ -32,16 +35,16 @@ export class Clock extends React.Component {
     render() {
         if (this.state.currentTime === null || this.state.currentDate === null) {
             return (
-                <>
+                <Container>
                     Loading...
-                </>
+                </Container>
             )
         }
         return (
-            <>
+            <Container>
                 <h2>{this.state.currentTime}</h2>
                 <h3>{this.state.currentDate}</h3>
-            </>
+            </Container>
         )
     }
 }
