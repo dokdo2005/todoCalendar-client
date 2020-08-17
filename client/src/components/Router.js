@@ -9,27 +9,30 @@ import Nav from "./Nav";
 import Cal from "./Calender";
 import Signup from "../Routes/Signup";
 import LoginContainer from "../Routes/Login";
+import PageSection from "./PageSection";
 
 
-export default ({userData, handleLogin, handleLogout, isLogin, isUserProfileModalVisible, handleUserProfileModal}) => (
+export default ({ userData, handleLogin, handleLogout, isLogin, isUserProfileModalVisible, handleUserProfileModal }) => (
   <Router>
     <>
-      <Nav 
+      <Nav
         isLogin={isLogin}
-        isUserProfileModalVisible= {isUserProfileModalVisible}
-        handleUserProfileModal = {handleUserProfileModal}
-        handleLogout= {handleLogout}
-        userData = {userData}
-       />
+        isUserProfileModalVisible={isUserProfileModalVisible}
+        handleUserProfileModal={handleUserProfileModal}
+        handleLogout={handleLogout}
+        userData={userData}
+      />
       <Switch>
         <Route exact path="/">
-          {/* <Cal></Cal> */}
+          <PageSection>
+            <Cal></Cal>
+          </PageSection>
         </Route>
         <Route path='/login'>
           {
-            isLogin ?  
-            <Redirect to='/'/> : 
-            <LoginContainer handleLogin={handleLogin} />
+            isLogin ?
+              <Redirect to='/' /> :
+              <LoginContainer handleLogin={handleLogin} />
           }
         </Route>
         <Route path="/signup">
