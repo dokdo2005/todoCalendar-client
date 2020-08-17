@@ -6,27 +6,23 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLogin: false
-      
+      isLogin: false,
     };
   }
 
-  handleLogin(){
+  handleLogin() {
     this.setState({
-      isLogin: !this.state.isLogin
-    })
-    
+      isLogin: !this.state.isLogin,
+    });
   }
 
   render() {
-    const {isLogin} = this.state;
+    const { isLogin } = this.state;
 
     return (
       <>
-        <GlobalStyles/>
-        <Router 
-          isLogin = {isLogin}
-          handleLogin={this.handleLogin.bind(this)}/>
+        <GlobalStyles />
+        <Router isLogin={isLogin} handleLogin={this.handleLogin.bind(this)} />
       </>
     );
   }

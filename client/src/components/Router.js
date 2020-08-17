@@ -6,32 +6,31 @@ import {
   Redirect,
 } from "react-router-dom";
 import Nav from "./Nav";
-import Cal from "./Calender";
-import Signup from "./Signup";
+// import Cal from "./Calender";
+import Signup from "../Routes/Signup";
 
 import LoginContainer from "../Routes/Login";
-
 
 export default ({ handleLogin, isLogin }) => (
   <Router>
     <>
-      <Nav
-        isLogin={isLogin}
-        />
+      <Nav isLogin={isLogin} />
       <Switch>
-        <Route exact path='/' >
-          <Cal></Cal>
+        <Route exact path="/">
+          {/* <Cal></Cal> */}
         </Route>
 
-        <Route path='/login'>
-          {
-            isLogin ?  <Redirect to='/'/> : <LoginContainer handleLogin={handleLogin} />
-          }
+        <Route path="/login">
+          {isLogin ? (
+            <Redirect to="/" />
+          ) : (
+            <LoginContainer handleLogin={handleLogin} />
+          )}
         </Route>
-        <Route path='/signup'>
+        <Route path="/signup">
           <Signup></Signup>
         </Route>
       </Switch>
     </>
   </Router>
-)
+);
