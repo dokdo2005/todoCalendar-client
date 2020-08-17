@@ -6,9 +6,10 @@ import {
   Redirect,
 } from "react-router-dom";
 import Nav from "./Nav";
-import Cal from "./Calender";
+// import Cal from "./Calender";
 import Signup from "../Routes/Signup";
 import LoginContainer from "../Routes/Login";
+import Todo from "../Routes/Todo";
 
 export default ({ handleLogin, isLogin }) => (
   <Router>
@@ -16,6 +17,7 @@ export default ({ handleLogin, isLogin }) => (
       <Nav isLogin={isLogin} />
       <Switch>
         <Route exact path="/">
+          <Todo />
           {/* <Cal></Cal> */}
         </Route>
 
