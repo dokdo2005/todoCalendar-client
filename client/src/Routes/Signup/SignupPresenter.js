@@ -1,17 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-
+import Title from '../../components/Title'
 const Wrap = styled.div`
   width: 100%;
   height: 100%;
   margin-top: 2vh;
   text-align: center;
   padding-top: 2vh;
-`;
-
-const Title = styled.h1`
-  font-size: 76px;
-  padding: 100px 0px 30px 0px;
 `;
 
 const Form = styled.form``;
@@ -98,7 +93,7 @@ const Button = styled.button`
   font-size: 20px;
   :hover {
     background-color: #007349;
-    box-shadow: 0.5px 3px 2px 2px rgba(0, 0, 255, 0.2);
+    box-shadow: 2px 2.5px 2.5px 2.5px rgba(0, 0, 0, 0.2);
   }
 `;
 
@@ -111,7 +106,7 @@ const SignupPresenter = ({
   SubmitBtn,
 }) => (
   <Wrap>
-    <Title>Signup</Title>
+    <Title titleName={`Signup`}/>
     <Form>
       <FormInput>
         <Labelname>name : </Labelname>
