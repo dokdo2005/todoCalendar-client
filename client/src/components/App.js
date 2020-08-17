@@ -8,6 +8,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       isLogin: false,
+      isUserProfileModalVisible: false,
       userData:{
         userId: null,
         email: null,
@@ -24,13 +25,28 @@ class App extends React.Component {
       userData: {
         userId: userData.data.id,
         email: userData.data.email,
-        usernam: userData.data.username
+        username: userData.data.username
       }
+    })
+  }
+  handleLogout = () =>{
+    userApi.logout();
+    this.setState({
+      userData: {},
+      isLogin: false,
+      isUserProfileModalVisible: !this.state.isUserProfileModalVisible
+    })
+    document.cookie = ''
+  }
+  
+  handleUserProfileModal= () => {
+    this.setState({
+      isUserProfileModalVisible : !this.state.isUserProfileModalVisible
     })
   }
 
   render() {
-    const {isLogin, userData} = this.state;
+    const {isLogin, userData, isUserProfileModalVisible} = this.state;
 
     return (
       <>
@@ -38,7 +54,11 @@ class App extends React.Component {
         <Router 
           userData = {userData}
           isLogin = {isLogin}
-          handleLogin={this.handleLogin.bind(this)}/>
+          handleLogin={this.handleLogin.bind(this)}
+          handleLogout= { this.handleLogout.bind(this)}
+          isUserProfileModalVisible = {isUserProfileModalVisible}
+          handleUserProfileModal = {this.handleUserProfileModal.bind(this)}
+          />
       </>
     );
   }
