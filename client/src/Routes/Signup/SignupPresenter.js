@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Title from "../../components/Title";
-import { Link } from "react-router-dom";
 
 const Wrap = styled.div`
   width: 100%;
