@@ -25,20 +25,20 @@ export const userApi = {
 export const todoApi = {
   // 전체 켈린더 데이터
   getAll: (userId) => {
-    api.get(`/calendar`, {
+    return api.get(`/calendar`, {
       userId,
     });
   },
   // 연도,월 기준 켈린더 데이터
   // yearMonth == 202008 string
   getAllByYearMonth: (userId, yearMonth) => {
-    api.post(`/calendar/${yearMonth}`, {
+    return api.post(`/calendar/${yearMonth}`, {
       userId,
     });
   },
   // 일정 만들기
   createOne: (userId, title, body, startDate, endDate) => {
-    api.post(`/calendar`, {
+    return api.post(`/calendar`, {
       userId,
       title,
       body,
@@ -48,7 +48,7 @@ export const todoApi = {
   },
   // 일정 수정하기
   patchOne: (id, title, body, startDate, endDate) => {
-    api.patch(`/calendar`, {
+    return api.patch(`/calendar`, {
       id,
       title,
       body,

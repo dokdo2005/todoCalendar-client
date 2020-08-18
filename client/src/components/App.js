@@ -1,7 +1,7 @@
 import React from "react";
 import GlobalStyles from "./GlobalStyles";
 import Router from "./Router";
-import { userApi } from "../api";
+import { userApi, todoApi } from "../api";
 
 class App extends React.Component {
   constructor(props) {
@@ -14,7 +14,22 @@ class App extends React.Component {
         email: null,
         username: null,
       },
+      todoList: null,
     };
+  }
+
+  async componentDidUpdate() {
+    let todoList;
+
+    if (this.state.isLogin) {
+      todoList = await todoApi.getAll(this.state.userData.userId);
+    }
+    if (todoList) {
+      this.setState({
+        todoList: todoList,
+      });
+    }
+    console.log(todoList);
   }
 
   handleLogin = async (email, password) => {
@@ -25,40 +40,41 @@ class App extends React.Component {
       userData: {
         userId: userData.data.id,
         email: userData.data.email,
-        username: userData.data.username
-      }
-    })
-  }
-  handleLogout = () =>{
+        username: userData.data.username,
+      },
+    });
+  };
+
+  handleLogout = () => {
     userApi.logout();
     this.setState({
       userData: {},
       isLogin: false,
-      isUserProfileModalVisible: !this.state.isUserProfileModalVisible
-    })
-    document.cookie = ''
-  }
-  
-  handleUserProfileModal= () => {
+      isUserProfileModalVisible: !this.state.isUserProfileModalVisible,
+    });
+    document.cookie = "";
+  };
+
+  handleUserProfileModal = () => {
     this.setState({
-      isUserProfileModalVisible : !this.state.isUserProfileModalVisible
-    })
-  }
+      isUserProfileModalVisible: !this.state.isUserProfileModalVisible,
+    });
+  };
 
   render() {
-    const {isLogin, userData, isUserProfileModalVisible} = this.state;
+    const { isLogin, userData, isUserProfileModalVisible } = this.state;
 
     return (
       <>
-        <GlobalStyles/>
-        <Router 
-          userData = {userData}
-          isLogin = {isLogin}
+        <GlobalStyles />
+        <Router
+          userData={userData}
+          isLogin={isLogin}
           handleLogin={this.handleLogin.bind(this)}
-          handleLogout= { this.handleLogout.bind(this)}
-          isUserProfileModalVisible = {isUserProfileModalVisible}
-          handleUserProfileModal = {this.handleUserProfileModal.bind(this)}
-          />
+          handleLogout={this.handleLogout.bind(this)}
+          isUserProfileModalVisible={isUserProfileModalVisible}
+          handleUserProfileModal={this.handleUserProfileModal.bind(this)}
+        />
       </>
     );
   }
