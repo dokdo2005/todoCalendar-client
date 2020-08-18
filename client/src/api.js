@@ -2,7 +2,6 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: `http://52.79.70.56:5000`,
-  withCredentials: true
 });
 
 export const userApi = {
@@ -13,7 +12,7 @@ export const userApi = {
       password,
     }),
   //로그아웃
-  logout: () => (api.post(`/logout`)),
+  logout: () => api.post(`/logout`),
   //회원가입
   signup: (username, email, password) =>
     api.post(`/signup`, {
