@@ -45,7 +45,9 @@ const TimeLabel = styled.label`
   font-size: 20px;
 `;
 
-const TimeInput = styled.input`
+const TimeInput = styled.input.attrs({
+  type: "time",
+})`
   border-bottom: 1px solid black;
   width: 70%;
 `;
@@ -56,7 +58,7 @@ const TextLabel = styled.p`
 
 const Textarea = styled.textarea`
   min-width: 100%;
-  min-height: 180px;
+  min-height: 150px;
   background-color: rgb(0, 0, 0, 0.1);
   resize: none;
 `;

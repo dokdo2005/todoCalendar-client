@@ -13,16 +13,21 @@ const BottomBtn = styled.button`
   padding: 5px 10px;
   border-radius: 5%;
   :hover {
-    background: #44b64f;
+    background: #55c6a6;
     color: white;
   }
 `;
 
-const TodoAddBtn = () => (
+const TodoAddBtn = ({ handleTodoModal }) => (
   <Container>
     <Form>
       <BottomBtn>ClearAll</BottomBtn>
-      <BottomBtn>
+      <BottomBtn
+        onClick={(e) => {
+          e.preventDefault();
+          handleTodoModal();
+        }}
+      >
         <FontAwesomeIcon icon={faPlus} />
       </BottomBtn>
     </Form>

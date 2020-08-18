@@ -9,6 +9,11 @@ export default class extends React.Component {
     };
   }
 
+  handleTodoModal = () => {
+    this.setState({ addTodoModal: !this.state.addTodoModal });
+    console.log(this.state.addTodoModal);
+  };
+
   /*
   1. userData를 받아서 todoList에 랜더링해줘야한다
   2. +버튼을 누르면 this.state.addTodoModal값이 true가 되고 모달창이 랜더링된다
@@ -20,6 +25,12 @@ export default class extends React.Component {
 
   render() {
     console.log(this.props); //{userData: {…}, isLogin: false}
-    return <TodoPresenter isLogin={this.props.isLogin} />;
+    return (
+      <TodoPresenter
+        isLogin={this.props.isLogin}
+        handleTodoModal={this.handleTodoModal.bind(this)}
+        addTodoModal={this.state.addTodoModal}
+      />
+    );
   }
 }

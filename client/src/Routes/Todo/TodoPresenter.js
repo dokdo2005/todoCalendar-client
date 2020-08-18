@@ -15,6 +15,8 @@ const Container = styled.div`
   /* background-color: bisque; */
 `;
 
+const MainTodoView = styled.div``;
+
 const QuotesSection = styled.div`
   padding: 30px 0px;
 `;
@@ -41,36 +43,63 @@ const TodoAddBtnSection = styled.div`
   top: 0;
 `;
 
-const TodoPresenter = ({ isLogin }) => (
+const BeforeLogin = styled.div``;
+
+const ModalSection = styled.div`
+  border-radius: 3%;
+  position: relative;
+  top: 0px;
+  display: inline-block;
+  background-color: white;
+`;
+
+const TodoPresenter = ({ isLogin, handleTodoModal, addTodoModal }) => (
   <Container>
-    <Clock />
-    <QuotesSection>
-      <Quotes />
-    </QuotesSection>
-    <ToDoTitle>
-      ToDo List 📚
-      <TodoAddBtnSection>
-        <TodoAddBtn />
-      </TodoAddBtnSection>
-    </ToDoTitle>
-    <TodoList>
-      <Todo />
-      <Todo />
-      <Todo />
-      <Todo />
-      <Todo />
-      <Todo />
-      <Todo />
-      <Todo />
-      <Todo />
-      <Todo />
-      <Todo />
-      <Todo />
-      <Todo />
-      <Todo />
-      <Todo />
-    </TodoList>
-    {/* <AddTodo /> */}
+    {addTodoModal ? (
+      <MainTodoView></MainTodoView>
+    ) : (
+      <>
+        <Clock />
+        <QuotesSection>
+          <Quotes />
+        </QuotesSection>
+        <ToDoTitle>
+          ToDo List 📚
+          <TodoAddBtnSection>
+            <TodoAddBtn handleTodoModal={handleTodoModal} />
+          </TodoAddBtnSection>
+        </ToDoTitle>
+        <TodoList>
+          <Todo />
+          <Todo />
+        </TodoList>
+      </>
+    )}
+
+    {addTodoModal ? (
+      <ModalSection>
+        <AddTodo handleTodoModal={handleTodoModal} />
+      </ModalSection>
+    ) : (
+      <></>
+    )}
+
+    {/* {isLogin ? (
+      <>
+        <ToDoTitle>
+          ToDo List 📚
+          <TodoAddBtnSection>
+            <TodoAddBtn />
+          </TodoAddBtnSection>
+        </ToDoTitle>
+        <TodoList>
+          <Todo />
+        </TodoList>
+        <AddTodo />
+      </>
+    ) : (
+      <BeforeLogin>hello</BeforeLogin>
+    )} */}
   </Container>
 );
 

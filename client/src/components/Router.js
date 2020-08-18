@@ -33,7 +33,6 @@ export default ({
       <Switch>
         <Route exact path="/">
           <Todo userData={userData} isLogin={isLogin}></Todo>
-          {/* <PageSection><Cal></Cal></PageSection> */}
         </Route>
         <Route path="/login">
           {isLogin ? (

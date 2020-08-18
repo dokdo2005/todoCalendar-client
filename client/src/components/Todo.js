@@ -39,6 +39,10 @@ const Text = styled.span`
 
 const Icon = styled.a`
   margin: 0px 0px 0px 15px;
+  :hover {
+    color: #55c6a6;
+    cursor: pointer;
+  }
 `;
 
 const Todo = () => (

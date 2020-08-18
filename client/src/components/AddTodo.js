@@ -1,15 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
-const Container = styled.section`
+const Container = styled.div`
   width: 50vh;
   height: 50vh;
   min-width: 160px;
   min-height: 460px;
   padding: 20px;
-  margin: 0 auto;
   border: 1px solid black;
   border-radius: 2%;
+  /* background-color: red; */
 `;
 
 const Header = styled.div`
@@ -22,8 +22,9 @@ const Title = styled.h3`
   padding-bottom: 20px;
 `;
 
-const CancelBtn = styled.a`
+const CancelBtn = styled.div`
   font-size: 28px;
+  cursor: pointer;
 `;
 
 const Form = styled.form``;
@@ -67,8 +68,10 @@ const TextLabel = styled.p`
 
 const Textarea = styled.textarea`
   min-width: 100%;
-  min-height: 100px;
+  min-height: 180px;
   background-color: rgb(0, 0, 0, 0.1);
+  border-radius: 3%;
+  padding: 10px;
   resize: none;
 `;
 
@@ -88,11 +91,11 @@ X를 클릭하면 홈으로 돌아가는 함수,
 send버튼을 누르면 서버로 전송하고 List를 만드는 함수,
 text를 입력하면 저장하는 state값
 */
-const AddTodo = () => (
+const AddTodo = ({ handleTodoModal }) => (
   <Container>
     <Header>
       <Title>일정 추가</Title>
-      <CancelBtn>X</CancelBtn>
+      <CancelBtn onClick={handleTodoModal}>X</CancelBtn>
     </Header>
     <Form>
       <Section>
@@ -115,7 +118,15 @@ const AddTodo = () => (
         <TextLabel>Content</TextLabel>
         <Textarea></Textarea>
       </Section>
-      <SendBtn>Send</SendBtn>
+      <SendBtn
+        onClick={(e) => {
+          e.preventDefault();
+
+          handleTodoModal();
+        }}
+      >
+        Send
+      </SendBtn>
     </Form>
   </Container>
 );
