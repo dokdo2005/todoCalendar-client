@@ -90,28 +90,21 @@ export default class extends React.Component {
       }
     }
   };
-
-  SubmitBtn(e) {
-    e.preventDefault();
-
+  handleErrorMessage(){
+    this.setState({
+      checkMessageEmail: '이메일이 중복이에요'
+    })
+  }
+  SubmitBtn() {
+    //중복체크를 onchange나 onkeyup으로 ?
     const { inputname, inputemail, inputpassword } = this.state;
 
-    try {
-      if (inputname !== null && inputemail !== null && inputpassword !== null) {
-        console.log("enter");
-        userApi.signup(inputname, inputemail, inputpassword).then((res) => {
-          if (res.status === 409) {
-            alert("이미 존재하는 계정입니다.");
-          } else if (res.status === 200) {
-            console.log("200");
-            console.log(this.props);
-            this.props.history.push("/login");
-          }
-        });
-      }
-    } catch {
-      this.setState({ error: "Can't SignUp" });
-    }
+    return userApi.signup(inputname, inputemail, inputpassword)
+      .then(res =>  res)
+      .catch(e => {
+        console.log(e);
+        this.handleErrorMessage();
+      })
   }
 
   render() {
@@ -123,6 +116,7 @@ export default class extends React.Component {
         checkMessagePassword={this.state.checkMessagePassword}
         checkMessagePasswordcheck={this.state.checkMessagePasswordcheck}
         SubmitBtn={this.SubmitBtn.bind(this)}
+        handleErrorMessage={this.handleErrorMessage.bind(this)}
       />
     );
   }

@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Title from "../../components/Title";
-import { Link } from "react-router-dom";
 
 const Wrap = styled.div`
   width: 100%;
@@ -106,40 +105,46 @@ const SignupPresenter = ({
   checkMessagePassword,
   checkMessagePasswordcheck,
   SubmitBtn,
+  handleErrorMessage
 }) => (
-  <Wrap>
-    <Title titleName={`Signup`} />
-    <Form>
-      <FormInput>
-        <Labelname>name : </Labelname>
-        <Inputname onChange={handleChange} />
-        <Span>{checkMessageName}</Span>
-      </FormInput>
-      <FormInput>
-        <Labelemail>E-mail : </Labelemail>
-        <Inputemail onChange={handleChange} />
-        <Span>{checkMessageEmail}</Span>
-      </FormInput>
-      <FormInput>
-        <Labelpassword>Password : </Labelpassword>
-        <Inputpassword onChange={handleChange} />
-        <Span>{checkMessagePassword}</Span>
-      </FormInput>
-      <FormInput>
-        <Labelpasswordcheck>Password 확인 : </Labelpasswordcheck>
-        <Inputpasswordcheck onChange={handleChange} />
-        <Span>{checkMessagePasswordcheck}</Span>
-      </FormInput>
-      <SignupBtn
-        onSubmit={(e) => {
-          e.preventDefault();
-          SubmitBtn(e);
-        }}
-      >
-        Send
+    <Wrap>
+      <Title titleName={`Signup`} />
+      <Form>
+        <FormInput>
+          <Labelname>name : </Labelname>
+          <Inputname onChange={handleChange} />
+          <Span>{checkMessageName}</Span>
+        </FormInput>
+        <FormInput>
+          <Labelemail>E-mail : </Labelemail>
+          <Inputemail onChange={handleChange} />
+          <Span>{checkMessageEmail}</Span>
+        </FormInput>
+        <FormInput>
+          <Labelpassword>Password : </Labelpassword>
+          <Inputpassword onChange={handleChange} />
+          <Span>{checkMessagePassword}</Span>
+        </FormInput>
+        <FormInput>
+          <Labelpasswordcheck>Password 확인 : </Labelpasswordcheck>
+          <Inputpasswordcheck onChange={handleChange} />
+          <Span>{checkMessagePasswordcheck}</Span>
+        </FormInput>
+        <SignupBtn
+          onClick={async (e) => {
+            e.preventDefault();
+            let result = await SubmitBtn();
+            if (result && result.status === 200) {
+              window.location.href = '/login'
+            } else {
+              handleErrorMessage();
+            }
+          }}
+        >
+          Send
       </SignupBtn>
-    </Form>
-  </Wrap>
-);
-
+      </Form>
+    </Wrap>
+  );
+// 123456789Qq!
 export default SignupPresenter;
