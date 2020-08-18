@@ -29,9 +29,10 @@ export default ({
         handleLogout={handleLogout}
         userData={userData}
       />
+      {/* isLogin이 false면 Loading이 랜더되고 true이면 홈이 핸더된다 */}
       <Switch>
         <Route exact path="/">
-          <Todo></Todo>
+          <Todo userData={userData} isLogin={isLogin}></Todo>
           {/* <PageSection><Cal></Cal></PageSection> */}
         </Route>
         <Route path="/login">

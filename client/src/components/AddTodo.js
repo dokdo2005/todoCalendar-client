@@ -6,7 +6,7 @@ const Container = styled.section`
   height: 50vh;
   min-width: 160px;
   min-height: 460px;
-  padding: 30px;
+  padding: 20px;
   margin: 0 auto;
   border: 1px solid black;
   border-radius: 2%;
@@ -29,7 +29,7 @@ const CancelBtn = styled.a`
 const Form = styled.form``;
 
 const Section = styled.div`
-  padding-bottom: 20px;
+  padding-bottom: 15px;
 `;
 
 const TitleLabel = styled.label`
@@ -41,11 +41,22 @@ const TitleInput = styled.input`
   width: 70%;
 `;
 
+const DayLabel = styled.label`
+  font-size: 20px;
+`;
+
+const DayInput = styled.input.attrs({
+  type: "date",
+})`
+  border-bottom: 1px solid black;
+  width: 70%;
+`;
+
 const TimeLabel = styled.label`
   font-size: 20px;
 `;
 
-const TimeInput = styled.input`
+const TimeInput = styled.input.attrs({ type: "time" })`
   border-bottom: 1px solid black;
   width: 70%;
 `;
@@ -56,7 +67,7 @@ const TextLabel = styled.p`
 
 const Textarea = styled.textarea`
   min-width: 100%;
-  min-height: 180px;
+  min-height: 100px;
   background-color: rgb(0, 0, 0, 0.1);
   resize: none;
 `;
@@ -88,6 +99,14 @@ const AddTodo = () => (
         <TitleLabel>Title : </TitleLabel>
         <TitleInput></TitleInput>
       </Section>
+      {/* <Section>
+        <DayLabel>Start day : </DayLabel>
+        <DayInput></DayInput>
+      </Section>
+      <Section>
+        <DayLabel>End day : </DayLabel>
+        <DayInput></DayInput>
+      </Section> */}
       <Section>
         <TimeLabel>Time : </TimeLabel>
         <TimeInput></TimeInput>

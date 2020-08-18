@@ -4,40 +4,41 @@ import {
   faCaretDown,
   faEdit,
   faTrashAlt,
-  faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Container = styled.div``;
+const Container = styled.li`
+  border-bottom: 1px dashed black;
+  padding: 10px;
+  width: 60%;
+  margin-left: 20%;
+`;
 
 const Form = styled.form`
+  width: 100%;
   display: flex;
+  font-size: 20px;
 `;
 
 const CheckBox = styled.input.attrs({
   type: "checkbox",
 })`
-  margin: 0px 10px 0px 0px;
+  margin: 7px 10px 0px 0px;
 `;
 
 const Title = styled.h3`
   width: 10%;
+  max-width: 150px;
+  /* background-color: blueviolet; */
 `;
 
 const Text = styled.span`
-  width: 30%;
+  width: 80%;
+  /* background-color: rebeccapurple; */
 `;
 
 const Icon = styled.a`
   margin: 0px 0px 0px 15px;
-`;
-
-const BottomBtn = styled.button`
-  margin: 0px 0px 0px 10px;
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  background: lightgrey;
 `;
 
 const Todo = () => (
@@ -55,16 +56,6 @@ const Todo = () => (
       <Icon>
         <FontAwesomeIcon icon={faTrashAlt} />
       </Icon>
-    </Form>
-    <Form>
-      <BottomBtn>
-        Clear
-        <br />
-        All
-      </BottomBtn>
-      <BottomBtn>
-        <FontAwesomeIcon icon={faPlus} />
-      </BottomBtn>
     </Form>
   </Container>
 );
