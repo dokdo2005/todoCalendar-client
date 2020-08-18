@@ -2,6 +2,7 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: `http://52.79.70.56:5000`,
+  withCredentials: true
 });
 
 export const userApi = {
