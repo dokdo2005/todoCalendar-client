@@ -8,7 +8,6 @@ class App extends React.Component {
     super(props);
     this.state = {
       isLogin: false,
-      isUserProfileModalVisible: false,
       userData: {
         userId: null,
         email: null,
@@ -50,19 +49,12 @@ class App extends React.Component {
     this.setState({
       userData: {},
       isLogin: false,
-      isUserProfileModalVisible: !this.state.isUserProfileModalVisible,
     });
     document.cookie = "";
   };
 
-  handleUserProfileModal = () => {
-    this.setState({
-      isUserProfileModalVisible: !this.state.isUserProfileModalVisible,
-    });
-  };
-
   render() {
-    const { isLogin, userData, isUserProfileModalVisible } = this.state;
+    const { isLogin, userData, } = this.state;
 
     return (
       <>
@@ -72,8 +64,6 @@ class App extends React.Component {
           isLogin={isLogin}
           handleLogin={this.handleLogin.bind(this)}
           handleLogout={this.handleLogout.bind(this)}
-          isUserProfileModalVisible={isUserProfileModalVisible}
-          handleUserProfileModal={this.handleUserProfileModal.bind(this)}
         />
       </>
     );

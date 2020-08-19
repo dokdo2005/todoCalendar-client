@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import UserProfileModal from "./UserProfileModal";
@@ -43,9 +43,13 @@ export default function Nav({
   isLogin,
   handleLogout,
   userData,
-  isUserProfileModalVisible,
   handleUserProfileModal,
 }) {
+  const [isUserProfileModalVisible, setUserProfileModalVisible]=useState(false);
+
+  function handleUserProfileModal() {
+    setUserProfileModalVisible(!isUserProfileModalVisible);
+  };
   return (
     <>
       <NavBar>
@@ -58,7 +62,7 @@ export default function Nav({
               <UserImg
                 useFor={`navBar`}
                 src={logo}
-                handleUserProfileModal={handleUserProfileModal}
+                handleUserProfileModal={handleUserProfileModal.bind(this)}
               ></UserImg>
               <UserProfileModal
                 isUserProfileModalVisible={isUserProfileModalVisible}
