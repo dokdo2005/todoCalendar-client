@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Timer from "react-live-clock";
 
 const Container = styled.div`
-  font-size: 40px;
+  font-size: 30px;
 `;
 
 const Section = styled.div``;
@@ -12,13 +12,11 @@ const Clock = () => (
   <Container>
     <Section>
       <Timer
-        format={"YYYY 년 MM 월 DD 일 "}
+        format={"YYYY년 MM월 DD일 "}
         ticking={true}
         timezone={"Asia/Seoul"}
       />
-    </Section>
-    <Section>
-      <Timer format={"HH 시 mm 분"} ticking={true} timezone={"Asia/Seoul"} />
+      <Timer format={"HH시 mm분"} ticking={true} timezone={"Asia/Seoul"} />
     </Section>
   </Container>
 );

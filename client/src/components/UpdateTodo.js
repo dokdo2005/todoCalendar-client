@@ -79,11 +79,11 @@ X를 클릭하면 홈으로 돌아가는 함수,
 send버튼을 누르면 서버로 전송하고 List를 만드는 함수,
 text를 입력하면 저장하는 state값
 */
-const UpdateTodo = () => (
+const UpdateTodo = ({ setIsModalState, isModalState }) => (
   <Container>
     <Header>
       <Title>일정 수정</Title>
-      <CancelBtn>X</CancelBtn>
+      <CancelBtn onClick={() => setIsModalState(!isModalState)}>X</CancelBtn>
     </Header>
     <Form>
       <Section>

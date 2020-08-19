@@ -6,17 +6,12 @@ export default class extends React.Component {
     super(props);
     this.state = {
       addTodoModal: false,
-      isDetail: false
     };
-  }
-
-  handleDetail = () => {
-    this.setState({ isDetail: !this.state.isDetail })
   }
 
   handleTodoModal = () => {
     this.setState({ addTodoModal: !this.state.addTodoModal });
-    console.log(this.state.addTodoModal);
+    // console.log(this.state.addTodoModal);
   };
 
   /*
@@ -29,14 +24,13 @@ export default class extends React.Component {
   */
 
   render() {
-    console.log(this.props); //{userData: {…}, isLogin: false}
+    console.log(this.props); //{todoList:[{},{},{}], userData: {…}, isLogin: false}
     return (
       <TodoPresenter
+        todoList={this.props.todoList}
         isLogin={this.props.isLogin}
         handleTodoModal={this.handleTodoModal.bind(this)}
         addTodoModal={this.state.addTodoModal}
-        handleDetail={this.handleDetail.bind(this)}
-        isDetail={this.state.isDetail}
       />
     );
   }

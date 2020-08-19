@@ -17,13 +17,9 @@ const Container = styled.div`
 
 const MainTodoView = styled.div``;
 
-const QuotesSection = styled.div`
-  padding: 30px 0px;
-`;
-
 const ToDoTitle = styled.h3`
-  font-size: 30px;
-  margin-bottom: 20px;
+  font-size: 50px;
+  margin: 20px 0px;
   border-bottom: 1px solid black;
   margin-left: 15%;
   width: 70%;
@@ -53,36 +49,39 @@ const ModalSection = styled.div`
   background-color: white;
 `;
 
-const TodoPresenter = ({ isLogin, handleTodoModal, addTodoModal, isDetail, handleDetail }) => (
+const TodoPresenter = ({
+  todoList,
+  isLogin,
+  handleTodoModal,
+  addTodoModal,
+}) => (
   <Container>
     {addTodoModal ? (
       <MainTodoView></MainTodoView>
     ) : (
-        <>
-          <Clock />
-          <QuotesSection>
-            <Quotes />
-          </QuotesSection>
-          <ToDoTitle>
-            ToDo List 📚
+      <>
+        <Clock />
+        <ToDoTitle>
+          ☑ TODO LIST
           <TodoAddBtnSection>
-              <TodoAddBtn handleTodoModal={handleTodoModal} />
-            </TodoAddBtnSection>
-          </ToDoTitle>
-          <TodoList>
-            <Todo isDetail={isDetail} handleDetali={handleDetail} />
-
-          </TodoList>
-        </>
-      )}
+            <TodoAddBtn handleTodoModal={handleTodoModal} />
+          </TodoAddBtnSection>
+        </ToDoTitle>
+        <TodoList>
+          {todoList.map((item) => (
+            <Todo key={item.id} data={item} />
+          ))}
+        </TodoList>
+      </>
+    )}
 
     {addTodoModal ? (
       <ModalSection>
         <AddTodo handleTodoModal={handleTodoModal} />
       </ModalSection>
     ) : (
-        <></>
-      )}
+      <></>
+    )}
 
     {/* {isLogin ? (
       <>
