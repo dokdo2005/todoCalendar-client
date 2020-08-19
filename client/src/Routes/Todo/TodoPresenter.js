@@ -53,36 +53,36 @@ const ModalSection = styled.div`
   background-color: white;
 `;
 
-const TodoPresenter = ({ isLogin, handleTodoModal, addTodoModal }) => (
+const TodoPresenter = ({ isLogin, handleTodoModal, addTodoModal, isDetail, handleDetail }) => (
   <Container>
     {addTodoModal ? (
       <MainTodoView></MainTodoView>
     ) : (
-      <>
-        <Clock />
-        <QuotesSection>
-          <Quotes />
-        </QuotesSection>
-        <ToDoTitle>
-          ToDo List 📚
+        <>
+          <Clock />
+          <QuotesSection>
+            <Quotes />
+          </QuotesSection>
+          <ToDoTitle>
+            ToDo List 📚
           <TodoAddBtnSection>
-            <TodoAddBtn handleTodoModal={handleTodoModal} />
-          </TodoAddBtnSection>
-        </ToDoTitle>
-        <TodoList>
-          <Todo />
-          <Todo />
-        </TodoList>
-      </>
-    )}
+              <TodoAddBtn handleTodoModal={handleTodoModal} />
+            </TodoAddBtnSection>
+          </ToDoTitle>
+          <TodoList>
+            <Todo isDetail={isDetail} handleDetali={handleDetail} />
+
+          </TodoList>
+        </>
+      )}
 
     {addTodoModal ? (
       <ModalSection>
         <AddTodo handleTodoModal={handleTodoModal} />
       </ModalSection>
     ) : (
-      <></>
-    )}
+        <></>
+      )}
 
     {/* {isLogin ? (
       <>

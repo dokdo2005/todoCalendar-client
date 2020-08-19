@@ -6,7 +6,12 @@ export default class extends React.Component {
     super(props);
     this.state = {
       addTodoModal: false,
+      isDetail: false
     };
+  }
+
+  handleDetail = () => {
+    this.setState({ isDetail: !this.state.isDetail })
   }
 
   handleTodoModal = () => {
@@ -30,6 +35,8 @@ export default class extends React.Component {
         isLogin={this.props.isLogin}
         handleTodoModal={this.handleTodoModal.bind(this)}
         addTodoModal={this.state.addTodoModal}
+        handleDetail={this.handleDetail.bind(this)}
+        isDetail={this.state.isDetail}
       />
     );
   }
