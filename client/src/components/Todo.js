@@ -45,6 +45,11 @@ const Icon = styled.a`
   }
 `;
 
+/*
+아이콘에 onclick을 하면 메소드에 상태값을 변경하면 
+상세내용이 보였다가 안보였다가 하는 방법을 구현
+*/
+
 const Todo = () => (
   <Container>
     <Form>
@@ -52,7 +57,12 @@ const Todo = () => (
       <Title>title</Title>
       <Text>text....</Text>
       <Icon>
-        <FontAwesomeIcon icon={faCaretDown} />
+        <FontAwesomeIcon
+          icon={faCaretDown}
+          onClick={() => {
+            console.log("상세");
+          }}
+        />
       </Icon>
       <Icon>
         <FontAwesomeIcon icon={faEdit} />

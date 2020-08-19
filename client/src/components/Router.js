@@ -10,9 +10,9 @@ import Nav from "./Nav";
 import Signup from "../Routes/Signup";
 import LoginContainer from "../Routes/Login";
 import Todo from "../Routes/Todo";
-import PageSection from "./PageSection";
 
 export default ({
+  todoList,
   userData,
   handleLogin,
   handleLogout,
@@ -32,7 +32,11 @@ export default ({
       {/* isLogin이 false면 Loading이 랜더되고 true이면 홈이 핸더된다 */}
       <Switch>
         <Route exact path="/">
-          <Todo userData={userData} isLogin={isLogin}></Todo>
+          <Todo
+            todoList={todoList}
+            userData={userData}
+            isLogin={isLogin}
+          ></Todo>
         </Route>
         <Route path="/login">
           {isLogin ? (

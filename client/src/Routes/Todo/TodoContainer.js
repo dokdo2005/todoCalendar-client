@@ -24,7 +24,7 @@ export default class extends React.Component {
   */
 
   render() {
-    console.log(this.props); //{userData: {…}, isLogin: false}
+    console.log(this.props); //{todoList:undefinded, userData: {…}, isLogin: false}
     return (
       <TodoPresenter
         isLogin={this.props.isLogin}

@@ -42,17 +42,6 @@ const TitleInput = styled.input`
   width: 70%;
 `;
 
-const DayLabel = styled.label`
-  font-size: 20px;
-`;
-
-const DayInput = styled.input.attrs({
-  type: "date",
-})`
-  border-bottom: 1px solid black;
-  width: 70%;
-`;
-
 const TimeLabel = styled.label`
   font-size: 20px;
 `;
@@ -102,14 +91,6 @@ const AddTodo = ({ handleTodoModal }) => (
         <TitleLabel>Title : </TitleLabel>
         <TitleInput></TitleInput>
       </Section>
-      {/* <Section>
-        <DayLabel>Start day : </DayLabel>
-        <DayInput></DayInput>
-      </Section>
-      <Section>
-        <DayLabel>End day : </DayLabel>
-        <DayInput></DayInput>
-      </Section> */}
       <Section>
         <TimeLabel>Time : </TimeLabel>
         <TimeInput></TimeInput>

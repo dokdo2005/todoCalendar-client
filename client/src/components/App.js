@@ -18,19 +18,20 @@ class App extends React.Component {
     };
   }
 
-  async componentDidUpdate() {
-    let todoList;
+  // async componentDidUpdate() {
+  //   //userId를 서버로 보내서 todolist를 받아온다
+  //   let todoList;
 
-    if (this.state.isLogin) {
-      todoList = await todoApi.getAll(this.state.userData.userId);
-    }
-    if (todoList) {
-      this.setState({
-        todoList: todoList,
-      });
-    }
-    console.log(todoList);
-  }
+  //   if (this.state.isLogin) {
+  //     todoList = await todoApi.getAll(this.state.userData.userId);
+  //   }
+  //   if (todoList) {
+  //     this.setState({
+  //       todoList: todoList,
+  //     });
+  //   }
+  //   console.log(todoList);
+  // }
 
   handleLogin = async (email, password) => {
     const userData = await userApi.login(email, password);
@@ -62,12 +63,18 @@ class App extends React.Component {
   };
 
   render() {
-    const { isLogin, userData, isUserProfileModalVisible } = this.state;
+    const {
+      isLogin,
+      userData,
+      isUserProfileModalVisible,
+      todoList,
+    } = this.state;
 
     return (
       <>
         <GlobalStyles />
         <Router
+          todoList={todoList}
           userData={userData}
           isLogin={isLogin}
           handleLogin={this.handleLogin.bind(this)}
