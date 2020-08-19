@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import {
   faCaretDown,
   faEdit,
   faTrashAlt,
+  faCaretUp,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import UpdateTodo from "../components/UpdateTodo";
 
 const Container = styled.li`
   border-bottom: 1px dashed black;
@@ -27,14 +29,13 @@ const CheckBox = styled.input.attrs({
 `;
 
 const Title = styled.h3`
-  width: 10%;
+  width: 30%;
+  padding-right: 50px;
   max-width: 150px;
-  /* background-color: blueviolet; */
 `;
 
 const Text = styled.span`
-  width: 80%;
-  /* background-color: rebeccapurple; */
+  width: 100%;
 `;
 
 const Icon = styled.a`
@@ -45,33 +46,153 @@ const Icon = styled.a`
   }
 `;
 
-/*
-아이콘에 onclick을 하면 메소드에 상태값을 변경하면 
-상세내용이 보였다가 안보였다가 하는 방법을 구현
-*/
+const Time = styled.div``;
 
-const Todo = () => (
-  <Container>
-    <Form>
-      <CheckBox></CheckBox>
-      <Title>title</Title>
-      <Text>text....</Text>
-      <Icon>
-        <FontAwesomeIcon
-          icon={faCaretDown}
-          onClick={() => {
-            console.log("상세");
-          }}
+const Div = styled.div`
+  width: 80%;
+`;
+
+const Todo = ({ data }) => {
+  const [isDetailState, setIsDetailState] = useState(false);
+  const [isModalState, setIsModalState] = useState(false);
+
+  console.log(data.id);
+
+  return (
+    <Container>
+      {isModalState ? (
+        <UpdateTodo
+          setIsModalState={setIsModalState.bind(this)}
+          isModalState={isModalState}
         />
-      </Icon>
-      <Icon>
-        <FontAwesomeIcon icon={faEdit} />
-      </Icon>
-      <Icon>
-        <FontAwesomeIcon icon={faTrashAlt} />
-      </Icon>
-    </Form>
-  </Container>
-);
+      ) : isDetailState ? (
+        <Form>
+          <CheckBox></CheckBox>
+          <Title>{data.title}</Title>
+          <Div>
+            <Text>{`${data.body}`}</Text>
+            <Time>{`Time : ${data.startDate.substring(
+              11,
+              13
+            )}시 ${data.startDate.substring(14, 16)}분`}</Time>
+          </Div>
+          <Icon>
+            <FontAwesomeIcon
+              icon={faCaretUp}
+              onClick={() => setIsDetailState(!isDetailState)}
+            />
+          </Icon>
+          <Icon>
+            <FontAwesomeIcon
+              icon={faEdit}
+              onClick={() => setIsModalState(!isModalState)}
+            />
+          </Icon>
+          <Icon>
+            <FontAwesomeIcon icon={faTrashAlt} />
+          </Icon>
+        </Form>
+      ) : (
+        <Form>
+          <CheckBox></CheckBox>
+          <Title>{`${data.title.substring(0, 5)}...`}</Title>
+          <Text>{`${data.body.substring(0, 25)}...`}</Text>
+          <Icon>
+            <FontAwesomeIcon
+              icon={faCaretDown}
+              onClick={() => setIsDetailState(!isDetailState)}
+            />
+          </Icon>
+          <Icon onClick={() => setIsModalState(!isModalState)}>
+            <FontAwesomeIcon icon={faEdit} />
+          </Icon>
+          <Icon>
+            <FontAwesomeIcon icon={faTrashAlt} />
+          </Icon>
+        </Form>
+      )}
+      {/* {isDetailState ? (
+        <Form>
+          <CheckBox></CheckBox>
+          <Title>{data.title}</Title>
+          <Div>
+            <Text>{`${data.body}`}</Text>
+            <Time>{`Time : ${data.startDate.substring(
+              11,
+              13
+            )}시 ${data.startDate.substring(14, 16)}분`}</Time>
+          </Div>
+          <Icon>
+            <FontAwesomeIcon
+              icon={faCaretUp}
+              onClick={() => setIsDetailState(!isDetailState)}
+            />
+          </Icon>
+          <Icon>
+            <FontAwesomeIcon
+              icon={faEdit}
+              onClick={() => console.log("enter")}
+            />
+          </Icon>
+          <Icon>
+            <FontAwesomeIcon icon={faTrashAlt} />
+          </Icon>
+        </Form>
+      ) : (
+        <Form>
+          <CheckBox></CheckBox>
+          <Title>{`${data.title.substring(0, 5)}...`}</Title>
+          <Text>{`${data.body.substring(0, 25)}...`}</Text>
+          <Icon>
+            <FontAwesomeIcon
+              icon={faCaretDown}
+              onClick={() => setIsDetailState(!isDetailState)}
+            />
+          </Icon>
+          <Icon
+            onClick={(e) => {
+              console.log(data.id);
+            }}
+          >
+            <FontAwesomeIcon icon={faEdit} />
+          </Icon>
+          <Icon>
+            <FontAwesomeIcon icon={faTrashAlt} />
+          </Icon>
+        </Form>
+      )} */}
+    </Container>
+  );
+};
 
 export default Todo;
+
+/*
+로그인된 화면
+
+<Form>
+        <CheckBox></CheckBox>
+        <Title>{data.title}</Title>
+        <Div>
+          <Text>{`${data.body}`}</Text>
+          <Time>{`Time : ${data.startDate.substring(
+            11,
+            13
+          )}시 ${data.startDate.substring(14, 16)}분`}</Time>
+        </Div>
+        <Icon>
+          <FontAwesomeIcon
+            icon={faCaretUp}
+            onClick={(e) => {
+              console.log(e.target, "상세");
+            }}
+          />
+        </Icon>
+        <Icon>
+          <FontAwesomeIcon icon={faEdit} />
+        </Icon>
+        <Icon>
+          <FontAwesomeIcon icon={faTrashAlt} />
+        </Icon>
+      </Form>
+*/
