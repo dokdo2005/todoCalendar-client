@@ -2,8 +2,6 @@ import React from "react";
 import GlobalStyles from "./GlobalStyles";
 import Router from "./Router";
 import { userApi, todoApi } from "../api";
-import { withCookies, Cookies } from "react-cookie";
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -24,7 +22,6 @@ class App extends React.Component {
     if (prevState.isLogin === false) {
       todoListData = await todoApi.getAll();
     }
-
     if (todoListData) {
       console.log("enter");
       this.setState({
@@ -43,12 +40,6 @@ class App extends React.Component {
 
   handleLogin = async (email, password) => {
     const userData = await userApi.login(email, password);
-    // console.log(userData);
-    // 1. 로그인할때 로컬스토리지로 쿠키 저장해두기
-    // 2.
-    // console.log(this.props);
-    // localStorage.setItem('uid', 'ㅁㄴ러ㅏㅣㄹㄴfskjd;l')
-    // console.log(document.cookie);
     this.setState({
       isLogin: !this.state.isLogin,
       userData: {
@@ -65,7 +56,6 @@ class App extends React.Component {
       userData: {},
       isLogin: false,
     });
-    document.cookie = "";
   };
 
   handleClearAll = () => {
