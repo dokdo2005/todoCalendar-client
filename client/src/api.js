@@ -48,13 +48,13 @@ export const todoApi = {
     });
   },
   // 일정 수정하기
-  patchOne: (id, title, body, startDate, endDate) => {
+  patchOne: (id, title, body, time, isDone) => {
     return api.patch(`/calendar`, {
       id,
       title,
       body,
-      startDate,
-      endDate,
+      time,
+      isDone,
     });
   },
   // 일정 삭제하기
