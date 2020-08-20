@@ -137,9 +137,11 @@ const UpdateTodo = ({
           //수정되지 않은 경우 생각하기
           if (updatetitle === null) {
             updatetitle = data.title;
-          } else if (updatebody === null) {
+          }
+          if (updatebody === null) {
             updatebody = data.body;
-          } else if (updatetime === null) {
+          }
+          if (updatetime === null) {
             updatetime = data.startDate.substring(11, 16);
           }
 

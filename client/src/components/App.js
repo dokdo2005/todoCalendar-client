@@ -13,20 +13,21 @@ class App extends React.Component {
         email: null,
         username: null,
       },
-      todoList: null
+      todoList: null,
     };
   }
 
    async componentDidUpdate(prevProps, prevState) {
     let todoList;
-
+    
     if (prevState.isLogin !== this.state.isLogin) {
+      console.log(this.state.isLogin, prevState.isLogin);
       todoList = await todoApi.getAll(this.state.userData.userId);
+      console.log(todoList);
     }
-    console.log(111111111111111111111111);
     if (todoList) {
       this.setState({
-        todoList: todoList,
+        todoList: todoList.data,
       });
     }
   }
