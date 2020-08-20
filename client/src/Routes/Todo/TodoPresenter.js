@@ -86,6 +86,7 @@ const TodoPresenter = ({
                   <TodoList>
                     {todoList.map((item) => (
                       <Todo
+                       updateTodoData={updateTodoData}
                         handleUpdateTitle={handleUpdateTitle}
                         handleUpdateTime={handleUpdateTime}
                         handleUpdateBody={handleUpdateBody}
@@ -133,7 +134,7 @@ const TodoPresenter = ({
           // 로그인전
           <>
             <Clock />
-            <BeforeLogin>Welcom ToDoList</BeforeLogin>
+            <BeforeLogin>Welcome ToDoList</BeforeLogin>
           </>
         )}
     </Container>
