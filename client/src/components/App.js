@@ -20,7 +20,7 @@ class App extends React.Component {
    async componentDidUpdate(prevProps, prevState) {
     let todoList;
     
-    if (prevState.isLogin !== this.state.isLogin) {
+    if (prevState.isLogin === false) {
       console.log(this.state.isLogin, prevState.isLogin);
       todoList = await todoApi.getAll(this.state.userData.userId);
       console.log(todoList);
