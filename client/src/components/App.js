@@ -16,9 +16,9 @@ class App extends React.Component {
     };
   }
 
-   async componentDidUpdate(prevProps, prevState) {
+  async componentDidUpdate(prevProps, prevState) {
     let todoListData;
-    
+
     if (prevState.isLogin === false) {
       todoListData = await todoApi.getAll();
     }
@@ -29,7 +29,7 @@ class App extends React.Component {
     }
   }
 
-   async updateTodoData(){
+  async updateTodoData() {
     let todosList = await todoApi.getAll();
 
     this.setState({
