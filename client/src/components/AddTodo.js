@@ -102,7 +102,6 @@ const AddTodo = ({ handleTodoModal }) => (
       <SendBtn
         onClick={(e) => {
           e.preventDefault();
-
           handleTodoModal();
         }}
       >

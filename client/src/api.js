@@ -28,7 +28,7 @@ export const todoApi = {
   getAll: () => {
     return api.get(`/calendar`);
   },
-  // 새로 만들기
+  // 일정 만들기
   createOne: (title, body, time) => {
     return api.post(`/calendar`, {
       title,
