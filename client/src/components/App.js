@@ -21,9 +21,7 @@ class App extends React.Component {
     let todoList;
     
     if (prevState.isLogin === false) {
-      console.log(this.state.isLogin, prevState.isLogin);
       todoList = await todoApi.getAll(this.state.userData.userId);
-      console.log(todoList);
     }
     if (todoList) {
       this.setState({
