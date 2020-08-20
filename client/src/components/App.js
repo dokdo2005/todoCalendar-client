@@ -16,25 +16,26 @@ class App extends React.Component {
     };
   }
 
-   async componentDidUpdate(prevProps, prevState) {
+  async componentDidUpdate(prevProps, prevState) {
     let todoListData;
-    
+
     if (prevState.isLogin === false) {
       todoListData = await todoApi.getAll();
     }
     if (todoListData) {
+      console.log("enter");
       this.setState({
         todoList: todoListData.data,
       });
     }
   }
 
-   async updateTodoData(){
+  async updateTodoData() {
     let todosList = await todoApi.getAll();
 
     this.setState({
-      todoList: todosList.data
-    })
+      todoList: todosList.data,
+    });
   }
 
   handleLogin = async (email, password) => {
@@ -60,9 +61,9 @@ class App extends React.Component {
   handleClearAll = () => {
     todoApi.deleteAll();
     this.setState({
-      todoList: null
+      todoList: [],
     });
-  }
+  };
 
   render() {
     const { isLogin, userData, todoList } = this.state;

@@ -6,6 +6,7 @@ import AddTodo from "../../components/AddTodo";
 import TodoAddBtn from "../../components/TodoAddBtn";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+
 const Container = styled.div`
   width: 100%;
   height: 100%;
@@ -75,9 +76,10 @@ const TodoPresenter = ({
               <ToDoTitle>
                 ☑ TODO LIST
                 <TodoAddBtnSection>
-                  <TodoAddBtn 
-                  handleClearAll={handleClearAll}
-                  handleTodoModal={handleTodoModal} />
+                  <TodoAddBtn
+                    handleClearAll={handleClearAll}
+                    handleTodoModal={handleTodoModal}
+                  />
                 </TodoAddBtnSection>
               </ToDoTitle>
               <TodoList>
@@ -109,6 +111,15 @@ const TodoPresenter = ({
         // 데이터가 없는 경우
         <>
           <Clock />
+          <ToDoTitle>
+            ☑ TODO LIST
+            <TodoAddBtnSection>
+              <TodoAddBtn
+                handleClearAll={handleClearAll}
+                handleTodoModal={handleTodoModal}
+              />
+            </TodoAddBtnSection>
+          </ToDoTitle>
           <Icon>
             <FontAwesomeIcon icon={faSpinner} pulse size={"5x"} />
           </Icon>
