@@ -49,6 +49,7 @@ export default class extends React.Component {
         updatetitle={this.state.updatetitle}
         updatetime={this.state.updatetime}
         updatebody={this.state.updatebody}
+        updateTodoData={ this.props.updateTodoData}
       />
     );
   }

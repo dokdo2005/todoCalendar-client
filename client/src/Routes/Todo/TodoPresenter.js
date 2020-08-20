@@ -61,6 +61,7 @@ const TodoPresenter = ({
   updatetitle,
   updatetime,
   updatebody,
+  updateTodoData
 }) => (
   <Container>
     {isLogin ? (
@@ -101,7 +102,9 @@ const TodoPresenter = ({
           )}
           {addTodoModal ? (
             <ModalSection>
-              <AddTodo handleTodoModal={handleTodoModal} />
+              <AddTodo 
+              updateTodoData={updateTodoData}
+              handleTodoModal={handleTodoModal} />
             </ModalSection>
           ) : (
             <></>
