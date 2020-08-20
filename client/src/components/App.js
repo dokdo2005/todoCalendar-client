@@ -65,6 +65,15 @@ class App extends React.Component {
     });
   };
 
+  handleClearOne = async (id) => {
+    let modifiedData;
+    modifiedData = await todoApi.deleteOne(id);
+    this.setState({
+      todoList: modifiedData.data
+    })
+
+  }
+
   render() {
     const { isLogin, userData, todoList } = this.state;
 
@@ -79,6 +88,7 @@ class App extends React.Component {
           handleLogin={this.handleLogin.bind(this)}
           handleLogout={this.handleLogout.bind(this)}
           handleClearAll={this.handleClearAll.bind(this)}
+          handleClearOne={this.handleClearOne.bind(this)}
         />
       </>
     );
