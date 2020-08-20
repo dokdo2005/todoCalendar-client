@@ -24,30 +24,19 @@ export const userApi = {
 };
 
 export const todoApi = {
-  // 전체 켈린더 데이터
-  getAll: (userId) => {
-    return api.get(`/calendar`, {
-      userId,
-    });
+  // 전체 데이터 가져오기
+  getAll: () => {
+    return api.get(`/calendar`);
   },
-  // 연도,월 기준 켈린더 데이터
-  // yearMonth == 202008 string
-  getAllByYearMonth: (userId, yearMonth) => {
-    return api.post(`/calendar/${yearMonth}`, {
-      userId,
-    });
-  },
-  // 일정 만들기
-  createOne: (userId, title, body, startDate, endDate) => {
+  // 새로 만들기
+  createOne: (title, body, time) => {
     return api.post(`/calendar`, {
-      userId,
       title,
       body,
-      startDate,
-      endDate,
+      time,
     });
   },
-  // 일정 수정하기
+  // 수정하기
   patchOne: (id, title, body, time, isDone) => {
     return api.patch(`/calendar`, {
       id,
@@ -57,10 +46,14 @@ export const todoApi = {
       isDone,
     });
   },
-  // 일정 삭제하기
+  // 삭제하기
   deleteOne: (id) => {
     api.delete("/calendar", {
       id,
     });
+  },
+  // 전체 삭제하기
+  deleteAll: () => {
+    api.delete("/calendar");
   },
 };
