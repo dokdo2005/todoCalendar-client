@@ -66,12 +66,8 @@ class App extends React.Component {
   };
 
   handleClearOne = async (id) => {
-    let modifiedData;
-    modifiedData = await todoApi.deleteOne(id);
-    this.setState({
-      todoList: modifiedData.data
-    })
-
+    console.log(typeof id);
+    let modifiedData = await todoApi.deleteOne(id);
   }
 
   render() {

@@ -14,7 +14,7 @@ const NavBar = styled.nav`
   display: block;
   position: fixed;
   top: 0%;
-  z-index: 289;
+  z-index: 5;
 `;
 const UserBtn = styled(Link)`
   color: white;
@@ -46,6 +46,7 @@ const QuotesWrap = styled.div`
   left: 70px;
   line-height: 2.5;
   color: white;
+  top: 4px;
 `;
 
 export default function Nav({
@@ -72,7 +73,7 @@ export default function Nav({
                 src={logo}
                 handleUserProfileModal={() => setUserProfileModalVisible(!isUserProfileModalVisible)}
               ></UserImg>
-              <QuotesWrap>
+              <QuotesWrap >
                 <Quotes></Quotes>
               </QuotesWrap>
               <UserProfileModal

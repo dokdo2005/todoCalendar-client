@@ -46,6 +46,7 @@ const LogoutBtn = styled(Link)`
   }
   `;
 const EditBtn = styled.div`
+  padding:0; 
   float:right;
 `
 
@@ -58,7 +59,7 @@ export default ({ isUserProfileModalVisible, handleLogout, userData }) => {
         isUserProfileModalVisible ?
           <UserInfoModal>
             <UserInfoWrapper>
-              <EditBtn>ㅎ</EditBtn>
+              <EditBtn>📷</EditBtn>
               <UserImg useFor={`modal`} src={"https://lh3.googleusercontent.com/ogw/ADGmqu_-n8nrFWm-MpZHy54krYtwVgLmBamnKrqNWfcu=s32-c-mo"} />
               <Username>{username}</Username>
               <UserEmail>{email}</UserEmail>
