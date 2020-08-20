@@ -3,8 +3,9 @@ import styled from "styled-components";
 import Clock from "../../components/Clock";
 import Todo from "../../components/Todo";
 import AddTodo from "../../components/AddTodo";
-import Quotes from "../../components/Quotes";
 import TodoAddBtn from "../../components/TodoAddBtn";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 const Container = styled.div`
   width: 100%;
@@ -12,7 +13,6 @@ const Container = styled.div`
   text-align: center;
   line-height: 1.5;
   padding-top: 100px;
-  /* background-color: bisque; */
 `;
 
 const MainTodoView = styled.div``;
@@ -39,7 +39,10 @@ const TodoAddBtnSection = styled.div`
   top: 0;
 `;
 
-const BeforeLogin = styled.div``;
+const BeforeLogin = styled.div`
+  padding: 50px;
+  font-size: 30px;
+`;
 
 const ModalSection = styled.div`
   border-radius: 3%;
@@ -47,6 +50,10 @@ const ModalSection = styled.div`
   top: 0px;
   display: inline-block;
   background-color: white;
+`;
+
+const Icon = styled.div`
+  padding: 30px;
 `;
 
 const TodoPresenter = ({
@@ -63,59 +70,64 @@ const TodoPresenter = ({
   updatebody,
 }) => (
   <Container>
-    {addTodoModal ? (
-      <MainTodoView></MainTodoView>
+    {isLogin ? (
+      // 로그인 후
+      todoList ? (
+        // 데이터를 받아온 경우
+        <>
+          {addTodoModal ? (
+            <MainTodoView></MainTodoView>
+          ) : (
+            <>
+              <Clock />
+              <ToDoTitle>
+                ☑ TODO LIST
+                <TodoAddBtnSection>
+                  <TodoAddBtn handleTodoModal={handleTodoModal} />
+                </TodoAddBtnSection>
+              </ToDoTitle>
+              <TodoList>
+                {todoList.map((item) => (
+                  <Todo
+                    handleUpdateTitle={handleUpdateTitle}
+                    handleUpdateTime={handleUpdateTime}
+                    handleUpdateBody={handleUpdateBody}
+                    updatetitle={updatetitle}
+                    updatetime={updatetime}
+                    updatebody={updatebody}
+                    key={item.id}
+                    data={item}
+                    UpdateTodoList={UpdateTodoList}
+                  />
+                ))}
+              </TodoList>
+            </>
+          )}
+
+          {addTodoModal ? (
+            <ModalSection>
+              <AddTodo handleTodoModal={handleTodoModal} />
+            </ModalSection>
+          ) : (
+            <></>
+          )}
+        </>
+      ) : (
+        // 데이터가 없는 경우
+        <>
+          <Clock />
+          <Icon>
+            <FontAwesomeIcon icon={faSpinner} pulse size={"5x"} />
+          </Icon>
+        </>
+      )
     ) : (
+      // 로그인전
       <>
         <Clock />
-        <ToDoTitle>
-          ☑ TODO LIST
-          <TodoAddBtnSection>
-            <TodoAddBtn handleTodoModal={handleTodoModal} />
-          </TodoAddBtnSection>
-        </ToDoTitle>
-        <TodoList>
-          {todoList.map((item) => (
-            <Todo
-              handleUpdateTitle={handleUpdateTitle}
-              handleUpdateTime={handleUpdateTime}
-              handleUpdateBody={handleUpdateBody}
-              updatetitle={updatetitle}
-              updatetime={updatetime}
-              updatebody={updatebody}
-              key={item.id}
-              data={item}
-              UpdateTodoList={UpdateTodoList}
-            />
-          ))}
-        </TodoList>
+        <BeforeLogin>Welcom ToDoList</BeforeLogin>
       </>
     )}
-
-    {addTodoModal ? (
-      <ModalSection>
-        <AddTodo handleTodoModal={handleTodoModal} />
-      </ModalSection>
-    ) : (
-      <></>
-    )}
-
-    {/* {isLogin ? (
-      <>
-        <ToDoTitle>
-          ToDo List 📚
-          <TodoAddBtnSection>
-            <TodoAddBtn />
-          </TodoAddBtnSection>
-        </ToDoTitle>
-        <TodoList>
-          <Todo />
-        </TodoList>
-        <AddTodo />
-      </>
-    ) : (
-      <BeforeLogin>hello</BeforeLogin>
-    )} */}
   </Container>
 );
 
