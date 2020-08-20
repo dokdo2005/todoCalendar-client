@@ -18,7 +18,7 @@ export default ({
   handleLogin,
   handleLogout,
   isLogin,
-
+  handleClearAll
 }) => (
   <Router>
     <>
@@ -35,6 +35,7 @@ export default ({
             userData={userData}
             isLogin={isLogin}
             updateTodoData={updateTodoData}
+            handleClearAll={handleClearAll}	
           ></Todo>
         : <div></div>}
         </Route>

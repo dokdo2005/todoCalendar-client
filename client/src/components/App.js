@@ -18,34 +18,35 @@ class App extends React.Component {
   }
 
    async componentDidUpdate(prevProps, prevState) {
-    let todoList;
+    let todoListData;
     
     if (prevState.isLogin === false) {
-      todoList = await todoApi.getAll(this.state.userData.userId);
+      todoListData = await todoApi.getAll();
     }
-    if (todoList) {
+    console.log(todoListData);
+    if (todoListData) {
       this.setState({
-        todoList: todoList.data,
+        todoList: todoListData.data,
       });
     }
   }
 
    async updateTodoData(){
+    let todosList = await todoApi.getAll();
 
-    let todosList = await todoApi.getAll(this.state.userData.userId);
     this.setState({
-      todoList: todosList
+      todoList: todosList.data
     })
   }
 
   handleLogin = async (email, password) => {
     const userData = await userApi.login(email, password);
-    console.log(userData);
+    // console.log(userData);
     // 1. 로그인할때 로컬스토리지로 쿠키 저장해두기
     // 2. 
-    console.log(this.props);
-    localStorage.setItem('uid', 'ㅁㄴ러ㅏㅣㄹㄴfskjd;l')
-    console.log(document.cookie);
+    // console.log(this.props);
+    // localStorage.setItem('uid', 'ㅁㄴ러ㅏㅣㄹㄴfskjd;l')
+    // console.log(document.cookie);
     this.setState({
       isLogin: !this.state.isLogin,
       userData: {
@@ -66,9 +67,9 @@ class App extends React.Component {
   };
 
   handleClearAll = () => {
-    // todoApi.deleteAll();
+    todoApi.deleteAll();
     this.setState({
-      todoList: []
+      todoList: null
     });
   }
 
