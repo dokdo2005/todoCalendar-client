@@ -42,7 +42,6 @@ const HomeBtn = styled.img`
 `;
 
 const QuotesWrap = styled.div`
-  /* background-color: red; */
   position: absolute;
   left: 70px;
   line-height: 2.5;
@@ -53,15 +52,10 @@ export default function Nav({
   isLogin,
   handleLogout,
   userData,
-  handleUserProfileModal,
 }) {
   const [isUserProfileModalVisible, setUserProfileModalVisible] = useState(
     false
   );
-
-  function handleUserProfileModal() {
-    setUserProfileModalVisible(!isUserProfileModalVisible);
-  }
 
   return (
     <>
@@ -75,7 +69,7 @@ export default function Nav({
               <UserImg
                 useFor={`navBar`}
                 src={logo}
-                handleUserProfileModal={handleUserProfileModal.bind(this)}
+                handleUserProfileModal={() => setUserProfileModalVisible(!isUserProfileModalVisible)}
               ></UserImg>
               <QuotesWrap>
                 <Quotes></Quotes>

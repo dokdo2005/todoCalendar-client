@@ -6,9 +6,7 @@ const Container = styled.section`
   height: 50vh;
   min-width: 160px;
   min-height: 460px;
-  /* padding: 20px; */
   margin: 0 auto;
-  /* border: 1px solid black; */
   border-radius: 2%;
 `;
 
@@ -113,7 +111,7 @@ const UpdateTodo = ({
       <Section>
         <TimeLabel>Time : </TimeLabel>
         <TimeInput
-          defaultValue={data.startDate.substring(11, 16)}
+          defaultValue={data.time.substring(0,5)}
           onChange={(e) => {
             e.preventDefault();
             handleUpdateTime(e.target.value);
@@ -134,7 +132,6 @@ const UpdateTodo = ({
         onClick={(e) => {
           e.preventDefault();
 
-          //수정되지 않은 경우 생각하기
           if (updatetitle === null) {
             updatetitle = data.title;
           }
@@ -142,9 +139,8 @@ const UpdateTodo = ({
             updatebody = data.body;
           }
           if (updatetime === null) {
-            updatetime = data.startDate.substring(11, 16);
+            updatetime = data.time;
           }
-
           UpdateTodoList(data.id, updatetitle, updatebody, updatetime);
         }}
       >

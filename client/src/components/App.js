@@ -17,24 +17,35 @@ class App extends React.Component {
     };
   }
 
-  // async componentDidMount() {
-  //   //userId를 서버로 보내서 todolist를 받아온다
-  //   let todoList;
+   async componentDidUpdate(prevProps, prevState) {
+    let todoList;
+    
+    if (prevState.isLogin === false) {
+      todoList = await todoApi.getAll(this.state.userData.userId);
+    }
+    if (todoList) {
+      this.setState({
+        todoList: todoList.data,
+      });
+    }
+  }
 
-  //   if (this.state.isLogin) {
-  //     todoList = await todoApi.getAll(this.state.userData.userId);
-  //   }
-  //   if (todoList) {
-  //     this.setState({
-  //       todoList: todoList,
-  //     });
-  //   }
-  //   console.log(todoList);
-  // }
+   async updateTodoData(){
+
+    let todosList = await todoApi.getAll(this.state.userData.userId);
+    this.setState({
+      todoList: todosList
+    })
+  }
 
   handleLogin = async (email, password) => {
     const userData = await userApi.login(email, password);
-
+    console.log(userData);
+    // 1. 로그인할때 로컬스토리지로 쿠키 저장해두기
+    // 2. 
+    console.log(this.props);
+    localStorage.setItem('uid', 'ㅁㄴ러ㅏㅣㄹㄴfskjd;l')
+    console.log(document.cookie);
     this.setState({
       isLogin: !this.state.isLogin,
       userData: {
@@ -61,6 +72,7 @@ class App extends React.Component {
       <>
         <GlobalStyles />
         <Router
+          updateTodoData={this.updateTodoData.bind(this)}
           todoList={todoList}
           userData={userData}
           isLogin={isLogin}
