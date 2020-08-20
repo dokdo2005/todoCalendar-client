@@ -111,6 +111,15 @@ const TodoPresenter = ({
         // 데이터가 없는 경우
         <>
           <Clock />
+          <ToDoTitle>
+            ☑ TODO LIST
+            <TodoAddBtnSection>
+              <TodoAddBtn
+                handleClearAll={handleClearAll}
+                handleTodoModal={handleTodoModal}
+              />
+            </TodoAddBtnSection>
+          </ToDoTitle>
           <Icon>
             <FontAwesomeIcon icon={faSpinner} pulse size={"5x"} />
           </Icon>

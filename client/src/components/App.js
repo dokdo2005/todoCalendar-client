@@ -61,7 +61,7 @@ class App extends React.Component {
   handleClearAll = () => {
     todoApi.deleteAll();
     this.setState({
-      todoList: null,
+      todoList: [],
     });
   };
 
