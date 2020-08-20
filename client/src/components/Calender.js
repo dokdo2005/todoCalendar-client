@@ -12,7 +12,6 @@ const MoreBtn = styled.div`
 function Cal() {
 
   function getListData(value) {
-    // console.dir(value)
     let listData;
 
     switch (value.date()) {
@@ -96,8 +95,6 @@ function Cal() {
             listData.slice(0, 3).map(item => (
               <li key={item.content}>
                 <div onClick={e => {
-                  // console.log(e.target.id)
-                  // console.dir(e.target)
                 }} id={item.type}>
                   {item.content.slice(0, 15) + '...'}
                 </div>

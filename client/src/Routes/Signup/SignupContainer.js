@@ -96,13 +96,11 @@ export default class extends React.Component {
     })
   }
   SubmitBtn() {
-    //중복체크를 onchange나 onkeyup으로 ?
     const { inputname, inputemail, inputpassword } = this.state;
 
     return userApi.signup(inputname, inputemail, inputpassword)
       .then(res =>  res)
       .catch(e => {
-        console.log(e);
         this.handleErrorMessage();
       })
   }
