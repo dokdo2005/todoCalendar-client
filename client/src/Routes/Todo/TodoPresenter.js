@@ -6,7 +6,6 @@ import AddTodo from "../../components/AddTodo";
 import TodoAddBtn from "../../components/TodoAddBtn";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-
 const Container = styled.div`
   width: 100%;
   height: 100%;
@@ -58,83 +57,85 @@ const TodoPresenter = ({
   handleUpdateTime,
   handleUpdateBody,
   handleClearAll,
+  handleClearOne,
   updatetitle,
   updatetime,
   updatebody,
   updateTodoData
 }) => (
-  <Container>
-    {isLogin ? (
-      // 로그인 후
-      todoList ? (
-        // 데이터를 받아온 경우
-        <>
-          {addTodoModal ? (
-            <MainTodoView></MainTodoView>
-          ) : (
+    <Container>
+      {isLogin ? (
+        // 로그인 후
+        todoList ? (
+          // 데이터를 받아온 경우
+          <>
+            {addTodoModal ? (
+              <MainTodoView></MainTodoView>
+            ) : (
+                <>
+                  <Clock />
+                  <ToDoTitle>
+                    ☑ TODO LIST
+                <TodoAddBtnSection>
+                      <TodoAddBtn
+                        handleClearAll={handleClearAll}
+                        handleTodoModal={handleTodoModal}
+                      />
+                    </TodoAddBtnSection>
+                  </ToDoTitle>
+                  <TodoList>
+                    {todoList.map((item) => (
+                      <Todo
+                        handleUpdateTitle={handleUpdateTitle}
+                        handleUpdateTime={handleUpdateTime}
+                        handleUpdateBody={handleUpdateBody}
+                        handleClearOne={handleClearOne}
+                        updatetitle={updatetitle}
+                        updatetime={updatetime}
+                        updatebody={updatebody}
+                        key={item.id}
+                        data={item}
+                        UpdateTodoList={UpdateTodoList}
+                      />
+                    ))}
+                  </TodoList>
+                </>
+              )}
+            {addTodoModal ? (
+              <ModalSection>
+                <AddTodo
+                  updateTodoData={updateTodoData}
+                  handleTodoModal={handleTodoModal} />
+              </ModalSection>
+            ) : (
+                <></>
+              )}
+          </>
+        ) : (
+            // 데이터가 없는 경우
             <>
               <Clock />
               <ToDoTitle>
                 ☑ TODO LIST
-                <TodoAddBtnSection>
+            <TodoAddBtnSection>
                   <TodoAddBtn
                     handleClearAll={handleClearAll}
                     handleTodoModal={handleTodoModal}
                   />
                 </TodoAddBtnSection>
               </ToDoTitle>
-              <TodoList>
-                {todoList.map((item) => (
-                  <Todo
-                    handleUpdateTitle={handleUpdateTitle}
-                    handleUpdateTime={handleUpdateTime}
-                    handleUpdateBody={handleUpdateBody}
-                    updatetitle={updatetitle}
-                    updatetime={updatetime}
-                    updatebody={updatebody}
-                    key={item.id}
-                    data={item}
-                    UpdateTodoList={UpdateTodoList}
-                  />
-                ))}
-              </TodoList>
+              <Icon>
+                <FontAwesomeIcon icon={faSpinner} pulse size={"5x"} />
+              </Icon>
             </>
-          )}
-          {addTodoModal ? (
-            <ModalSection>
-              <AddTodo 
-              updateTodoData={updateTodoData}
-              handleTodoModal={handleTodoModal} />
-            </ModalSection>
-          ) : (
-            <></>
-          )}
-        </>
+          )
       ) : (
-        // 데이터가 없는 경우
-        <>
-          <Clock />
-          <ToDoTitle>
-            ☑ TODO LIST
-            <TodoAddBtnSection>
-              <TodoAddBtn
-                handleClearAll={handleClearAll}
-                handleTodoModal={handleTodoModal}
-              />
-            </TodoAddBtnSection>
-          </ToDoTitle>
-          <Icon>
-            <FontAwesomeIcon icon={faSpinner} pulse size={"5x"} />
-          </Icon>
-        </>
-      )
-    ) : (
-      // 로그인전
-      <>
-        <Clock />
-        <BeforeLogin>Welcom ToDoList</BeforeLogin>
-      </>
-    )}
-  </Container>
-);
+          // 로그인전
+          <>
+            <Clock />
+            <BeforeLogin>Welcom ToDoList</BeforeLogin>
+          </>
+        )}
+    </Container>
+  );
 export default TodoPresenter;
