@@ -1,5 +1,6 @@
-import React from "react";
+import React,{useState} from "react";
 import styled from "styled-components";
+import { todoApi } from "../api";
 
 const Container = styled.div`
   width: 50vh;
@@ -9,7 +10,6 @@ const Container = styled.div`
   padding: 20px;
   border: 1px solid black;
   border-radius: 2%;
-  /* background-color: red; */
 `;
 
 const Header = styled.div`
@@ -37,25 +37,31 @@ const TitleLabel = styled.label`
   font-size: 20px;
 `;
 
-const TitleInput = styled.input`
-  border-bottom: 1px solid black;
-  width: 70%;
-`;
-
 const TimeLabel = styled.label`
   font-size: 20px;
 `;
 
-const TimeInput = styled.input.attrs({ type: "time" })`
+const TimeInput = styled.input.attrs({
+   type: "time",
+   name: 'timeInput'
+  })`
   border-bottom: 1px solid black;
   width: 70%;
 `;
 
+const TitleInput = styled.input.attrs({
+  name: 'titleInput'
+})`
+  border-bottom: 1px solid black;
+  width: 70%;
+`;
 const TextLabel = styled.p`
   font-size: 20px;
 `;
 
-const Textarea = styled.textarea`
+const Textarea = styled.textarea.attrs({
+  name: 'contentInput'
+})`
   min-width: 100%;
   min-height: 180px;
   background-color: rgb(0, 0, 0, 0.1);
@@ -75,12 +81,14 @@ const SendBtn = styled.button`
     box-shadow: 0.5px 3px 2px 2px rgba(0, 0, 255, 0.2);
   }
 `;
-/*
-X를 클릭하면 홈으로 돌아가는 함수,
-send버튼을 누르면 서버로 전송하고 List를 만드는 함수,
-text를 입력하면 저장하는 state값
-*/
-const AddTodo = ({ handleTodoModal }) => (
+
+const AddTodo = ({ handleTodoModal,updateTodoData }) => {
+  
+const [timeInput, setTimeInput] = useState('')
+const [titleInput, setTitleInput]  = useState('')
+const [contentInput, setContentInput]  = useState('')
+
+  return (
   <Container>
     <Header>
       <Title>일정 추가</Title>
@@ -89,19 +97,27 @@ const AddTodo = ({ handleTodoModal }) => (
     <Form>
       <Section>
         <TitleLabel>Title : </TitleLabel>
-        <TitleInput></TitleInput>
+        <TitleInput
+          onChange={e => setTitleInput(e.target.value)}
+        ></TitleInput>
       </Section>
       <Section>
         <TimeLabel>Time : </TimeLabel>
-        <TimeInput></TimeInput>
+        <TimeInput
+          onChange={e => setTimeInput(e.target.value)}
+        ></TimeInput>
       </Section>
       <Section>
         <TextLabel>Content</TextLabel>
-        <Textarea></Textarea>
+        <Textarea
+          onChange={e => setContentInput(e.target.value)}
+        ></Textarea>
       </Section>
       <SendBtn
-        onClick={(e) => {
+        onClick={async (e) => {
           e.preventDefault();
+          await todoApi.createOne(titleInput,contentInput,timeInput)
+          await updateTodoData();
           handleTodoModal();
         }}
       >
@@ -109,6 +125,6 @@ const AddTodo = ({ handleTodoModal }) => (
       </SendBtn>
     </Form>
   </Container>
-);
+)};
 
 export default AddTodo;
