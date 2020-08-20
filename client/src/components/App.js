@@ -2,6 +2,7 @@ import React from "react";
 import GlobalStyles from "./GlobalStyles";
 import Router from "./Router";
 import { userApi, todoApi } from "../api";
+import { withCookies, Cookies } from "react-cookie";
 
 class App extends React.Component {
   constructor(props) {
@@ -19,22 +20,35 @@ class App extends React.Component {
 
   async componentDidUpdate(prevProps, prevState) {
     let todoListData;
+
     if (prevState.isLogin === false) {
       todoListData = await todoApi.getAll();
     }
-    console.log(todoListData);
+
     if (todoListData) {
+      console.log("enter");
       this.setState({
         todoList: todoListData.data,
       });
     }
   }
 
+  async updateTodoData() {
+    let todosList = await todoApi.getAll();
+
+    this.setState({
+      todoList: todosList.data,
+    });
+  }
+
   handleLogin = async (email, password) => {
     const userData = await userApi.login(email, password);
-
-    localStorage.setItem("test", "123");
-
+    // console.log(userData);
+    // 1. 로그인할때 로컬스토리지로 쿠키 저장해두기
+    // 2.
+    // console.log(this.props);
+    // localStorage.setItem('uid', 'ㅁㄴ러ㅏㅣㄹㄴfskjd;l')
+    // console.log(document.cookie);
     this.setState({
       isLogin: !this.state.isLogin,
       userData: {
@@ -54,6 +68,13 @@ class App extends React.Component {
     document.cookie = "";
   };
 
+  handleClearAll = () => {
+    todoApi.deleteAll();
+    this.setState({
+      todoList: null,
+    });
+  };
+
   render() {
     const { isLogin, userData, todoList } = this.state;
 
@@ -61,11 +82,13 @@ class App extends React.Component {
       <>
         <GlobalStyles />
         <Router
+          updateTodoData={this.updateTodoData.bind(this)}
           todoList={todoList}
           userData={userData}
           isLogin={isLogin}
           handleLogin={this.handleLogin.bind(this)}
           handleLogout={this.handleLogout.bind(this)}
+          handleClearAll={this.handleClearAll.bind(this)}
         />
       </>
     );

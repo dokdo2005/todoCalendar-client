@@ -12,23 +12,17 @@ import LoginContainer from "../Routes/Login";
 import Todo from "../Routes/Todo";
 
 export default ({
+  updateTodoData,
   todoList,
   userData,
   handleLogin,
   handleLogout,
   isLogin,
-  isUserProfileModalVisible,
-  handleUserProfileModal,
+  handleClearAll,
 }) => (
   <Router>
     <>
-      <Nav
-        isLogin={isLogin}
-        isUserProfileModalVisible={isUserProfileModalVisible}
-        handleUserProfileModal={handleUserProfileModal}
-        handleLogout={handleLogout}
-        userData={userData}
-      />
+      <Nav isLogin={isLogin} handleLogout={handleLogout} userData={userData} />
       {/* isLogin이 false면 Loading이 랜더되고 true이면 홈이 핸더된다 */}
       <Switch>
         <Route exact path="/">
@@ -36,6 +30,8 @@ export default ({
             todoList={todoList}
             userData={userData}
             isLogin={isLogin}
+            updateTodoData={updateTodoData}
+            handleClearAll={handleClearAll}
           ></Todo>
         </Route>
         <Route path="/login">

@@ -65,8 +65,6 @@ const Todo = ({
   const [isDetailState, setIsDetailState] = useState(false);
   const [isModalState, setIsModalState] = useState(false);
 
-  console.log(data.id);
-
   return (
     <Container>
       {isModalState ? (
@@ -88,10 +86,9 @@ const Todo = ({
           <Title>{data.title}</Title>
           <Div>
             <Text>{`${data.body}`}</Text>
-            <Time>{`Time : ${data.startDate.substring(
-              11,
-              13
-            )}시 ${data.startDate.substring(14, 16)}분`}</Time>
+            <Time>{`Time : ${data.time.substring(0, 2)}시 ${data.time.substring(
+              6
+            )}분`}</Time>
           </Div>
           <Icon>
             <FontAwesomeIcon

@@ -29,16 +29,12 @@ export default class extends React.Component {
     this.setState({ addTodoModal: !this.state.addTodoModal });
   };
 
-  UpdateTodoList(id, title, body, time) {
-    // 수정폼에서 send버튼을 누르면 서버로 수정요청보내는 함수
-    // time을 어떻게 전달할지 생각하기
-    //todoApi.patchOne(id, title, body, time);
-    //console.log(todoApi.patchOne);
-    console.log(id, title, body, time);
+  async UpdateTodoList(id, title, body, time) {
+    await todoApi.patchOne(id, title, body, time);
+    this.props.updateTodoData();
   }
 
   render() {
-    console.log(this.props); //{todoList:[{},{},{}], userData: {…}, isLogin: false}
     return (
       <TodoPresenter
         UpdateTodoList={this.UpdateTodoList.bind(this)}
@@ -49,6 +45,7 @@ export default class extends React.Component {
         handleUpdateTitle={this.handleUpdateTitle.bind(this)}
         handleUpdateTime={this.handleUpdateTime.bind(this)}
         handleUpdateBody={this.handleUpdateBody.bind(this)}
+        handleClearAll={this.props.handleClearAll}
         updatetitle={this.state.updatetitle}
         updatetime={this.state.updatetime}
         updatebody={this.state.updatebody}

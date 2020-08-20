@@ -14,9 +14,7 @@ const Container = styled.div`
   line-height: 1.5;
   padding-top: 100px;
 `;
-
 const MainTodoView = styled.div``;
-
 const ToDoTitle = styled.h3`
   font-size: 50px;
   margin: 20px 0px;
@@ -25,25 +23,21 @@ const ToDoTitle = styled.h3`
   width: 70%;
   position: relative;
 `;
-
 const TodoList = styled.ul`
   width: 100%;
   height: 100%;
   display: inline-block;
 `;
-
 const TodoAddBtnSection = styled.div`
   /* background-color: red; */
   position: absolute;
   right: 0;
   top: 0;
 `;
-
 const BeforeLogin = styled.div`
   padding: 50px;
   font-size: 30px;
 `;
-
 const ModalSection = styled.div`
   border-radius: 3%;
   position: relative;
@@ -51,11 +45,9 @@ const ModalSection = styled.div`
   display: inline-block;
   background-color: white;
 `;
-
 const Icon = styled.div`
   padding: 30px;
 `;
-
 const TodoPresenter = ({
   UpdateTodoList,
   todoList,
@@ -65,6 +57,7 @@ const TodoPresenter = ({
   handleUpdateTitle,
   handleUpdateTime,
   handleUpdateBody,
+  handleClearAll,
   updatetitle,
   updatetime,
   updatebody,
@@ -83,7 +76,10 @@ const TodoPresenter = ({
               <ToDoTitle>
                 ☑ TODO LIST
                 <TodoAddBtnSection>
-                  <TodoAddBtn handleTodoModal={handleTodoModal} />
+                  <TodoAddBtn
+                    handleClearAll={handleClearAll}
+                    handleTodoModal={handleTodoModal}
+                  />
                 </TodoAddBtnSection>
               </ToDoTitle>
               <TodoList>
@@ -103,7 +99,6 @@ const TodoPresenter = ({
               </TodoList>
             </>
           )}
-
           {addTodoModal ? (
             <ModalSection>
               <AddTodo handleTodoModal={handleTodoModal} />
@@ -130,5 +125,4 @@ const TodoPresenter = ({
     )}
   </Container>
 );
-
 export default TodoPresenter;
