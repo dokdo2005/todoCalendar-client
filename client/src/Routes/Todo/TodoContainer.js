@@ -45,6 +45,7 @@ export default class extends React.Component {
         handleUpdateTitle={this.handleUpdateTitle.bind(this)}
         handleUpdateTime={this.handleUpdateTime.bind(this)}
         handleUpdateBody={this.handleUpdateBody.bind(this)}
+        handleClearAll={this.props.handleClearAll}
         updatetitle={this.state.updatetitle}
         updatetime={this.state.updatetime}
         updatebody={this.state.updatebody}

@@ -18,6 +18,7 @@ export default ({
   handleLogin,
   handleLogout,
   isLogin,
+
 }) => (
   <Router>
     <>
