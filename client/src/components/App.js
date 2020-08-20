@@ -23,6 +23,7 @@ class App extends React.Component {
       todoListData = await todoApi.getAll();
     }
     if (todoListData) {
+      console.log("enter");
       this.setState({
         todoList: todoListData.data,
       });
@@ -33,8 +34,8 @@ class App extends React.Component {
     let todosList = await todoApi.getAll();
 
     this.setState({
-      todoList: todosList.data
-    })
+      todoList: todosList.data,
+    });
   }
 
   handleLogin = async (email, password) => {
@@ -60,9 +61,9 @@ class App extends React.Component {
   handleClearAll = () => {
     todoApi.deleteAll();
     this.setState({
-      todoList: null
+      todoList: [],
     });
-  }
+  };
 
   render() {
     const { isLogin, userData, todoList } = this.state;

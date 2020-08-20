@@ -1,10 +1,8 @@
 import axios from "axios";
-
 const api = axios.create({
   baseURL: `http://13.124.217.154:5000`,
   withCredentials: true,
 });
-
 export const userApi = {
   //로그인
   login: (email, password) =>
@@ -22,7 +20,6 @@ export const userApi = {
       password,
     }),
 };
-
 export const todoApi = {
   // 전체 데이터 가져오기
   getAll: () => {

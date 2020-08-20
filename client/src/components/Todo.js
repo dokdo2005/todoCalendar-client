@@ -86,7 +86,9 @@ const Todo = ({
           <Title>{data.title}</Title>
           <Div>
             <Text>{`${data.body}`}</Text>
-            <Time>{`Time : ${data.time.substring(0,2)}시 ${data.time.substring(6)}분`}</Time>
+            <Time>{`Time : ${data.time.substring(0, 2)}시 ${data.time.substring(
+              6
+            )}분`}</Time>
           </Div>
           <Icon>
             <FontAwesomeIcon
@@ -128,4 +130,3 @@ const Todo = ({
 };
 
 export default Todo;
-

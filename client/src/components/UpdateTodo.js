@@ -111,7 +111,7 @@ const UpdateTodo = ({
       <Section>
         <TimeLabel>Time : </TimeLabel>
         <TimeInput
-          defaultValue={data.time.substring(0,5)}
+          defaultValue={data.time.substring(0, 5)}
           onChange={(e) => {
             e.preventDefault();
             handleUpdateTime(e.target.value);
@@ -142,6 +142,7 @@ const UpdateTodo = ({
             updatetime = data.time;
           }
           UpdateTodoList(data.id, updatetitle, updatebody, updatetime);
+          setIsModalState(!isModalState);
         }}
       >
         Send
