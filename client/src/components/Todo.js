@@ -128,88 +128,8 @@ const Todo = ({
           </Icon>
         </Form>
       )}
-      {/* {isDetailState ? (
-        <Form>
-          <CheckBox></CheckBox>
-          <Title>{data.title}</Title>
-          <Div>
-            <Text>{`${data.body}`}</Text>
-            <Time>{`Time : ${data.startDate.substring(
-              11,
-              13
-            )}시 ${data.startDate.substring(14, 16)}분`}</Time>
-          </Div>
-          <Icon>
-            <FontAwesomeIcon
-              icon={faCaretUp}
-              onClick={() => setIsDetailState(!isDetailState)}
-            />
-          </Icon>
-          <Icon>
-            <FontAwesomeIcon
-              icon={faEdit}
-              onClick={() => console.log("enter")}
-            />
-          </Icon>
-          <Icon>
-            <FontAwesomeIcon icon={faTrashAlt} />
-          </Icon>
-        </Form>
-      ) : (
-        <Form>
-          <CheckBox></CheckBox>
-          <Title>{`${data.title.substring(0, 5)}...`}</Title>
-          <Text>{`${data.body.substring(0, 25)}...`}</Text>
-          <Icon>
-            <FontAwesomeIcon
-              icon={faCaretDown}
-              onClick={() => setIsDetailState(!isDetailState)}
-            />
-          </Icon>
-          <Icon
-            onClick={(e) => {
-              console.log(data.id);
-            }}
-          >
-            <FontAwesomeIcon icon={faEdit} />
-          </Icon>
-          <Icon>
-            <FontAwesomeIcon icon={faTrashAlt} />
-          </Icon>
-        </Form>
-      )} */}
     </Container>
   );
 };
 
 export default Todo;
-
-/*
-로그인된 화면
-
-<Form>
-        <CheckBox></CheckBox>
-        <Title>{data.title}</Title>
-        <Div>
-          <Text>{`${data.body}`}</Text>
-          <Time>{`Time : ${data.startDate.substring(
-            11,
-            13
-          )}시 ${data.startDate.substring(14, 16)}분`}</Time>
-        </Div>
-        <Icon>
-          <FontAwesomeIcon
-            icon={faCaretUp}
-            onClick={(e) => {
-              console.log(e.target, "상세");
-            }}
-          />
-        </Icon>
-        <Icon>
-          <FontAwesomeIcon icon={faEdit} />
-        </Icon>
-        <Icon>
-          <FontAwesomeIcon icon={faTrashAlt} />
-        </Icon>
-      </Form>
-*/

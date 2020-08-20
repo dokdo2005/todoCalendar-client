@@ -17,23 +17,23 @@ class App extends React.Component {
     };
   }
 
-  // async componentDidMount() {
-  //   //userId를 서버로 보내서 todolist를 받아온다
-  //   let todoList;
-
-  //   if (this.state.isLogin) {
-  //     todoList = await todoApi.getAll(this.state.userData.userId);
-  //   }
-  //   if (todoList) {
-  //     this.setState({
-  //       todoList: todoList,
-  //     });
-  //   }
-  //   console.log(todoList);
-  // }
+  async componentDidUpdate(prevProps, prevState) {
+    let todoListData;
+    if (prevState.isLogin === false) {
+      todoListData = await todoApi.getAll();
+    }
+    console.log(todoListData);
+    if (todoListData) {
+      this.setState({
+        todoList: todoListData.data,
+      });
+    }
+  }
 
   handleLogin = async (email, password) => {
     const userData = await userApi.login(email, password);
+
+    localStorage.setItem("test", "123");
 
     this.setState({
       isLogin: !this.state.isLogin,

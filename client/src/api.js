@@ -1,10 +1,8 @@
 import axios from "axios";
-
 const api = axios.create({
   baseURL: `http://13.124.217.154:5000`,
   withCredentials: true,
 });
-
 export const userApi = {
   //로그인
   login: (email, password) =>
@@ -22,32 +20,20 @@ export const userApi = {
       password,
     }),
 };
-
 export const todoApi = {
-  // 전체 켈린더 데이터
-  getAll: (userId) => {
-    return api.get(`/calendar`, {
-      userId,
-    });
-  },
-  // 연도,월 기준 켈린더 데이터
-  // yearMonth == 202008 string
-  getAllByYearMonth: (userId, yearMonth) => {
-    return api.post(`/calendar/${yearMonth}`, {
-      userId,
-    });
+  // 전체 데이터 가져오기
+  getAll: () => {
+    return api.get(`/calendar`);
   },
   // 일정 만들기
-  createOne: (userId, title, body, startDate, endDate) => {
+  createOne: (title, body, time) => {
     return api.post(`/calendar`, {
-      userId,
       title,
       body,
-      startDate,
-      endDate,
+      time,
     });
   },
-  // 일정 수정하기
+  // 수정하기
   patchOne: (id, title, body, time, isDone) => {
     return api.patch(`/calendar`, {
       id,
@@ -57,10 +43,14 @@ export const todoApi = {
       isDone,
     });
   },
-  // 일정 삭제하기
+  // 삭제하기
   deleteOne: (id) => {
     api.delete("/calendar", {
       id,
     });
+  },
+  // 전체 삭제하기
+  deleteAll: () => {
+    api.delete("/calendar");
   },
 };
