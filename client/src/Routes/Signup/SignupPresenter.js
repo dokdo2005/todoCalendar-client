@@ -146,5 +146,4 @@ const SignupPresenter = ({
       </Form>
     </Wrap>
   );
-// 123456789Qq!
 export default SignupPresenter;
