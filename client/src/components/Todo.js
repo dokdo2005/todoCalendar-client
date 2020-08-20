@@ -52,7 +52,16 @@ const Div = styled.div`
   width: 80%;
 `;
 
-const Todo = ({ data }) => {
+const Todo = ({
+  data,
+  UpdateTodoList,
+  handleUpdateTitle,
+  handleUpdateTime,
+  handleUpdateBody,
+  updatetitle,
+  updatetime,
+  updatebody,
+}) => {
   const [isDetailState, setIsDetailState] = useState(false);
   const [isModalState, setIsModalState] = useState(false);
 
@@ -62,8 +71,16 @@ const Todo = ({ data }) => {
     <Container>
       {isModalState ? (
         <UpdateTodo
+          UpdateTodoList={UpdateTodoList}
+          data={data}
           setIsModalState={setIsModalState.bind(this)}
           isModalState={isModalState}
+          handleUpdateTitle={handleUpdateTitle}
+          handleUpdateTime={handleUpdateTime}
+          handleUpdateBody={handleUpdateBody}
+          updatetitle={updatetitle}
+          updatetime={updatetime}
+          updatebody={updatebody}
         />
       ) : isDetailState ? (
         <Form>

@@ -50,10 +50,17 @@ const ModalSection = styled.div`
 `;
 
 const TodoPresenter = ({
+  UpdateTodoList,
   todoList,
   isLogin,
   handleTodoModal,
   addTodoModal,
+  handleUpdateTitle,
+  handleUpdateTime,
+  handleUpdateBody,
+  updatetitle,
+  updatetime,
+  updatebody,
 }) => (
   <Container>
     {addTodoModal ? (
@@ -69,7 +76,17 @@ const TodoPresenter = ({
         </ToDoTitle>
         <TodoList>
           {todoList.map((item) => (
-            <Todo key={item.id} data={item} />
+            <Todo
+              handleUpdateTitle={handleUpdateTitle}
+              handleUpdateTime={handleUpdateTime}
+              handleUpdateBody={handleUpdateBody}
+              updatetitle={updatetitle}
+              updatetime={updatetime}
+              updatebody={updatebody}
+              key={item.id}
+              data={item}
+              UpdateTodoList={UpdateTodoList}
+            />
           ))}
         </TodoList>
       </>
