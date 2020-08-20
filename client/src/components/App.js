@@ -54,6 +54,13 @@ class App extends React.Component {
     document.cookie = "";
   };
 
+  handleClearAll = () => {
+    // todoApi.deleteAll();
+    this.setState({
+      todoList: []
+    });
+  }
+
   render() {
     const { isLogin, userData, todoList } = this.state;
 
@@ -66,6 +73,7 @@ class App extends React.Component {
           isLogin={isLogin}
           handleLogin={this.handleLogin.bind(this)}
           handleLogout={this.handleLogout.bind(this)}
+          handleClearAll={this.handleClearAll.bind(this)}
         />
       </>
     );

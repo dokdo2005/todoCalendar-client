@@ -65,70 +65,66 @@ const TodoPresenter = ({
   handleUpdateTitle,
   handleUpdateTime,
   handleUpdateBody,
+  handleClearAll,
   updatetitle,
   updatetime,
   updatebody,
 }) => (
-  <Container>
-    {isLogin ? (
-      // 로그인 후
-      todoList ? (
-        // 데이터를 받아온 경우
-        <>
-          {addTodoModal ? (
-            <MainTodoView></MainTodoView>
-          ) : (
-            <>
-              <Clock />
-              <ToDoTitle>
-                ☑ TODO LIST
-                <TodoAddBtnSection>
-                  <TodoAddBtn handleTodoModal={handleTodoModal} />
-                </TodoAddBtnSection>
-              </ToDoTitle>
-              <TodoList>
-                {todoList.map((item) => (
-                  <Todo
-                    handleUpdateTitle={handleUpdateTitle}
-                    handleUpdateTime={handleUpdateTime}
-                    handleUpdateBody={handleUpdateBody}
-                    updatetitle={updatetitle}
-                    updatetime={updatetime}
-                    updatebody={updatebody}
-                    key={item.id}
-                    data={item}
-                    UpdateTodoList={UpdateTodoList}
-                  />
-                ))}
-              </TodoList>
-            </>
-          )}
-
-          {addTodoModal ? (
-            <ModalSection>
-              <AddTodo handleTodoModal={handleTodoModal} />
-            </ModalSection>
-          ) : (
-            <></>
-          )}
-        </>
+    <Container>
+      {addTodoModal ? (
+        <MainTodoView></MainTodoView>
       ) : (
-        // 데이터가 없는 경우
-        <>
-          <Clock />
-          <Icon>
-            <FontAwesomeIcon icon={faSpinner} pulse size={"5x"} />
-          </Icon>
-        </>
-      )
-    ) : (
-      // 로그인전
+          <>
+            <Clock />
+            <ToDoTitle>
+              ☑ TODO LIST
+          <TodoAddBtnSection>
+                <TodoAddBtn handleTodoModal={handleTodoModal} handleClearAll={handleClearAll} />
+              </TodoAddBtnSection>
+            </ToDoTitle>
+            <TodoList>
+              {todoList.map((item) => (
+                <Todo
+                  handleUpdateTitle={handleUpdateTitle}
+                  handleUpdateTime={handleUpdateTime}
+                  handleUpdateBody={handleUpdateBody}
+                  updatetitle={updatetitle}
+                  updatetime={updatetime}
+                  updatebody={updatebody}
+                  key={item.id}
+                  data={item}
+                  UpdateTodoList={UpdateTodoList}
+                />
+              ))}
+            </TodoList>
+          </>
+        )}
+
+      {addTodoModal ? (
+        <ModalSection>
+          <AddTodo handleTodoModal={handleTodoModal} />
+        </ModalSection>
+      ) : (
+          <></>
+        )}
+
+      {/* {isLogin ? (
       <>
-        <Clock />
-        <BeforeLogin>Welcom ToDoList</BeforeLogin>
+        <ToDoTitle>
+          ToDo List 📚
+          <TodoAddBtnSection>
+            <TodoAddBtn />
+          </TodoAddBtnSection>
+        </ToDoTitle>
+        <TodoList>
+          <Todo />
+        </TodoList>
+        <AddTodo />
       </>
-    )}
-  </Container>
-);
+    ) : (
+      <BeforeLogin>hello</BeforeLogin>
+    )} */}
+    </Container>
+  );
 
 export default TodoPresenter;
