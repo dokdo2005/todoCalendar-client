@@ -38,23 +38,21 @@ export const todoApi = {
     });
   },
   // 일정 만들기
-  createOne: (userId, title, body, startDate, endDate) => {
+  createOne: (title, body, time) => {
     return api.post(`/calendar`, {
-      userId,
       title,
       body,
-      startDate,
-      endDate,
+      time
     });
   },
   // 일정 수정하기
-  patchOne: (id, title, body, startDate, endDate) => {
+  patchOne: (id, title, body, time, isDone) => {
     return api.patch(`/calendar`, {
       id,
       title,
       body,
-      startDate,
-      endDate,
+      time,
+      isDone
     });
   },
   // 일정 삭제하기

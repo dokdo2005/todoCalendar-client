@@ -13,47 +13,42 @@ class App extends React.Component {
         email: null,
         username: null,
       },
-      todoList: [
-        {
-          id: 1,
-          userId: 1,
-          title: "1일 제목은이렇고",
-          body:
-            "1일 본문은 이렇고1일 본문은 이렇고1일 본문은 이렇고1일 본문은 이렇고1일 본문은 이렇고1일 본문은 이렇고1일 본문은 이렇고1일 본문은 이렇고1일 본문은 이렇고1일 본문은 이렇고1일 본문은 이렇고1일 본문은 이렇고1일 본문은 이렇고1일 본문은 이렇고1일 본문은 이렇고",
-          startDate: "2020-01-01T09:30:00.000Z",
-          endDate: "2020-01-02T09:30:00.000Z",
-          isDone: false,
-          createdAt: "2020-08-18T06:22:37.000Z",
-          updatedAt: "2020-08-18T06:22:37.000Z",
-        },
-        {
-          id: 2,
-          userId: 1,
-          title: "2일 제목은이렇고",
-          body: "2일 본문은 이렇고",
-          startDate: "2020-01-01T09:30:00.000Z",
-          endDate: "2020-01-02T09:30:00.000Z",
-          isDone: false,
-          createdAt: "2020-08-18T06:22:37.000Z",
-          updatedAt: "2020-08-18T06:22:37.000Z",
-        },
-        {
-          id: 3,
-          userId: 1,
-          title: "3일 제목은이렇고",
-          body: "3일 본문은 이렇고",
-          startDate: "2020-01-01T09:30:00.000Z",
-          endDate: "2020-01-02T09:30:00.000Z",
-          isDone: false,
-          createdAt: "2020-08-18T06:22:37.000Z",
-          updatedAt: "2020-08-18T06:22:37.000Z",
-        },
-      ],
+      todoList: null
     };
   }
 
-  // async componentDidMount() {
-  //   //userId를 서버로 보내서 todolist를 받아온다
+   async componentDidUpdate(prevProps, prevState) {
+    let todoList;
+
+    if (prevState.isLogin !== this.state.isLogin) {
+      todoList = await todoApi.getAll(this.state.userData.userId);
+    }
+    console.log(111111111111111111111111);
+    if (todoList) {
+      this.setState({
+        todoList: todoList,
+      });
+    }
+  }
+
+   async updateTodoData(){
+    this.setState({
+      todoList: null
+    })
+    let todosList = await todoApi.getAll(this.state.userData.userId);
+
+    this.setState({
+      todoList: todosList
+    })
+  }
+
+
+
+
+
+
+
+  // async componentDidUpdate() {
   //   let todoList;
 
   //   if (this.state.isLogin) {
@@ -96,6 +91,7 @@ class App extends React.Component {
       <>
         <GlobalStyles />
         <Router
+          updateTodoData={this.updateTodoData.bind(this)}
           todoList={todoList}
           userData={userData}
           isLogin={isLogin}

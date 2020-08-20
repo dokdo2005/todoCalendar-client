@@ -29,16 +29,27 @@ export default class extends React.Component {
     this.setState({ addTodoModal: !this.state.addTodoModal });
   };
 
-  UpdateTodoList(id, title, body, time) {
+  async UpdateTodoList(id, title, body, time) {
     // 수정폼에서 send버튼을 누르면 서버로 수정요청보내는 함수
     // time을 어떻게 전달할지 생각하기
-    //todoApi.patchOne(id, title, body, time);
+    //let tododata = await todoApi.patchOne(id, title, body, time);
     //console.log(todoApi.patchOne);
+
+    // 여기서 투두 서버로 보내고 
+    // app에있는 투두 바꿔주기
+    
+    // 리렌더링 플로우 =>
+    // 1. 서버에 patch요청
+    //   1. app에서 todolist 서버로부터 다시 받아오기
+    
+    await todoApi.patchOne(id, title, body, time);
+    this.props.updateTodoData();
+
     console.log(id, title, body, time);
   }
 
   render() {
-    console.log(this.props); //{todoList:[{},{},{}], userData: {…}, isLogin: false}
+    // console.log(this.props); //{todoList:[{},{},{}], userData: {…}, isLogin: false}
     return (
       <TodoPresenter
         UpdateTodoList={this.UpdateTodoList.bind(this)}

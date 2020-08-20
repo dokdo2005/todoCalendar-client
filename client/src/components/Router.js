@@ -12,6 +12,7 @@ import LoginContainer from "../Routes/Login";
 import Todo from "../Routes/Todo";
 
 export default ({
+  updateTodoData,
   todoList,
   userData,
   handleLogin,
@@ -32,11 +33,13 @@ export default ({
       {/* isLogin이 false면 Loading이 랜더되고 true이면 홈이 핸더된다 */}
       <Switch>
         <Route exact path="/">
-          <Todo
+         {isLogin?  <Todo
             todoList={todoList}
             userData={userData}
             isLogin={isLogin}
+            updateTodoData={updateTodoData}
           ></Todo>
+        : <div></div>}
         </Route>
         <Route path="/login">
           {isLogin ? (
