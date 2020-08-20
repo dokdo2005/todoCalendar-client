@@ -19,36 +19,38 @@ export default ({
   isLogin,
   isUserProfileModalVisible,
   handleUserProfileModal,
+  handleClearAll
 }) => (
-  <Router>
-    <>
-      <Nav
-        isLogin={isLogin}
-        isUserProfileModalVisible={isUserProfileModalVisible}
-        handleUserProfileModal={handleUserProfileModal}
-        handleLogout={handleLogout}
-        userData={userData}
-      />
-      {/* isLogin이 false면 Loading이 랜더되고 true이면 홈이 핸더된다 */}
-      <Switch>
-        <Route exact path="/">
-          <Todo
-            todoList={todoList}
-            userData={userData}
-            isLogin={isLogin}
-          ></Todo>
-        </Route>
-        <Route path="/login">
-          {isLogin ? (
-            <Redirect to="/" />
-          ) : (
-            <LoginContainer handleLogin={handleLogin} />
-          )}
-        </Route>
-        <Route path="/signup">
-          <Signup></Signup>
-        </Route>
-      </Switch>
-    </>
-  </Router>
-);
+    <Router>
+      <>
+        <Nav
+          isLogin={isLogin}
+          isUserProfileModalVisible={isUserProfileModalVisible}
+          handleUserProfileModal={handleUserProfileModal}
+          handleLogout={handleLogout}
+          userData={userData}
+        />
+        {/* isLogin이 false면 Loading이 랜더되고 true이면 홈이 핸더된다 */}
+        <Switch>
+          <Route exact path="/">
+            <Todo
+              todoList={todoList}
+              userData={userData}
+              isLogin={isLogin}
+              handleClearAll={handleClearAll}
+            ></Todo>
+          </Route>
+          <Route path="/login">
+            {isLogin ? (
+              <Redirect to="/" />
+            ) : (
+                <LoginContainer handleLogin={handleLogin} />
+              )}
+          </Route>
+          <Route path="/signup">
+            <Signup></Signup>
+          </Route>
+        </Switch>
+      </>
+    </Router>
+  );

@@ -18,10 +18,14 @@ const BottomBtn = styled.button`
   }
 `;
 
-const TodoAddBtn = ({ handleTodoModal }) => (
+const TodoAddBtn = ({ handleTodoModal, handleClearAll }) => (
   <Container>
     <Form>
-      <BottomBtn>ClearAll</BottomBtn>
+      <BottomBtn
+        onClick={(e) => {
+          e.preventDefault();
+          handleClearAll();
+        }}>Clear All</BottomBtn>
       <BottomBtn
         onClick={(e) => {
           e.preventDefault();

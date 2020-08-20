@@ -58,49 +58,50 @@ const TodoPresenter = ({
   handleUpdateTitle,
   handleUpdateTime,
   handleUpdateBody,
+  handleClearAll,
   updatetitle,
   updatetime,
   updatebody,
 }) => (
-  <Container>
-    {addTodoModal ? (
-      <MainTodoView></MainTodoView>
-    ) : (
-      <>
-        <Clock />
-        <ToDoTitle>
-          ☑ TODO LIST
+    <Container>
+      {addTodoModal ? (
+        <MainTodoView></MainTodoView>
+      ) : (
+          <>
+            <Clock />
+            <ToDoTitle>
+              ☑ TODO LIST
           <TodoAddBtnSection>
-            <TodoAddBtn handleTodoModal={handleTodoModal} />
-          </TodoAddBtnSection>
-        </ToDoTitle>
-        <TodoList>
-          {todoList.map((item) => (
-            <Todo
-              handleUpdateTitle={handleUpdateTitle}
-              handleUpdateTime={handleUpdateTime}
-              handleUpdateBody={handleUpdateBody}
-              updatetitle={updatetitle}
-              updatetime={updatetime}
-              updatebody={updatebody}
-              key={item.id}
-              data={item}
-              UpdateTodoList={UpdateTodoList}
-            />
-          ))}
-        </TodoList>
-      </>
-    )}
+                <TodoAddBtn handleTodoModal={handleTodoModal} handleClearAll={handleClearAll} />
+              </TodoAddBtnSection>
+            </ToDoTitle>
+            <TodoList>
+              {todoList.map((item) => (
+                <Todo
+                  handleUpdateTitle={handleUpdateTitle}
+                  handleUpdateTime={handleUpdateTime}
+                  handleUpdateBody={handleUpdateBody}
+                  updatetitle={updatetitle}
+                  updatetime={updatetime}
+                  updatebody={updatebody}
+                  key={item.id}
+                  data={item}
+                  UpdateTodoList={UpdateTodoList}
+                />
+              ))}
+            </TodoList>
+          </>
+        )}
 
-    {addTodoModal ? (
-      <ModalSection>
-        <AddTodo handleTodoModal={handleTodoModal} />
-      </ModalSection>
-    ) : (
-      <></>
-    )}
+      {addTodoModal ? (
+        <ModalSection>
+          <AddTodo handleTodoModal={handleTodoModal} />
+        </ModalSection>
+      ) : (
+          <></>
+        )}
 
-    {/* {isLogin ? (
+      {/* {isLogin ? (
       <>
         <ToDoTitle>
           ToDo List 📚
@@ -116,7 +117,7 @@ const TodoPresenter = ({
     ) : (
       <BeforeLogin>hello</BeforeLogin>
     )} */}
-  </Container>
-);
+    </Container>
+  );
 
 export default TodoPresenter;
