@@ -18,15 +18,11 @@ export default ({
   handleLogin,
   handleLogout,
   isLogin,
-  isUserProfileModalVisible,
-  handleUserProfileModal,
 }) => (
   <Router>
     <>
       <Nav
         isLogin={isLogin}
-        isUserProfileModalVisible={isUserProfileModalVisible}
-        handleUserProfileModal={handleUserProfileModal}
         handleLogout={handleLogout}
         userData={userData}
       />

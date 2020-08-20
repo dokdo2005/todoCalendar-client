@@ -31,39 +31,21 @@ class App extends React.Component {
   }
 
    async updateTodoData(){
-    this.setState({
-      todoList: null
-    })
-    let todosList = await todoApi.getAll(this.state.userData.userId);
 
+    let todosList = await todoApi.getAll(this.state.userData.userId);
     this.setState({
       todoList: todosList
     })
   }
 
-
-
-
-
-
-
-  // async componentDidUpdate() {
-  //   let todoList;
-
-  //   if (this.state.isLogin) {
-  //     todoList = await todoApi.getAll(this.state.userData.userId);
-  //   }
-  //   if (todoList) {
-  //     this.setState({
-  //       todoList: todoList,
-  //     });
-  //   }
-  //   console.log(todoList);
-  // }
-
   handleLogin = async (email, password) => {
     const userData = await userApi.login(email, password);
-
+    console.log(userData);
+    // 1. 로그인할때 로컬스토리지로 쿠키 저장해두기
+    // 2. 
+    console.log(this.props);
+    localStorage.setItem('uid', 'ㅁㄴ러ㅏㅣㄹㄴfskjd;l')
+    console.log(document.cookie);
     this.setState({
       isLogin: !this.state.isLogin,
       userData: {
