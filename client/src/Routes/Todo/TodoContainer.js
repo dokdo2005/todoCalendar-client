@@ -1,36 +1,57 @@
 import React from "react";
 import TodoPresenter from "./TodoPresenter";
+import { todoApi } from "../../api";
 
 export default class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       addTodoModal: false,
+      updatetitle: null,
+      updatetime: null,
+      updatebody: null,
     };
   }
 
-  handleTodoModal = () => {
-    this.setState({ addTodoModal: !this.state.addTodoModal });
-    // console.log(this.state.addTodoModal);
+  handleUpdateTitle = (value) => {
+    this.setState({ updatetitle: value });
   };
 
-  /*
-  1. userData를 받아서 todoList에 랜더링해줘야한다
-  2. +버튼을 누르면 this.state.addTodoModal값이 true가 되고 모달창이 랜더링된다
-  3. clearAll버튼을 누르면 todoList를 전부 삭제한다
-  4. 상세보기 버튼을 누르면 모든 데이터가 보여야한다
-  5. 수정버튼을 누르면 수정모달창이 떠야한다
-  6. 삭제버튼을 누르면 해당 List만 삭제가 되어야한다
-  */
+  handleUpdateTime = (value) => {
+    this.setState({ updatetime: value });
+  };
+
+  handleUpdateBody = (value) => {
+    this.setState({ updatebody: value });
+  };
+
+  handleTodoModal = () => {
+    this.setState({ addTodoModal: !this.state.addTodoModal });
+  };
+
+  UpdateTodoList(id, title, body, time) {
+    // 수정폼에서 send버튼을 누르면 서버로 수정요청보내는 함수
+    // time을 어떻게 전달할지 생각하기
+    //todoApi.patchOne(id, title, body, time);
+    //console.log(todoApi.patchOne);
+    console.log(id, title, body, time);
+  }
 
   render() {
     console.log(this.props); //{todoList:[{},{},{}], userData: {…}, isLogin: false}
     return (
       <TodoPresenter
+        UpdateTodoList={this.UpdateTodoList.bind(this)}
         todoList={this.props.todoList}
         isLogin={this.props.isLogin}
         handleTodoModal={this.handleTodoModal.bind(this)}
         addTodoModal={this.state.addTodoModal}
+        handleUpdateTitle={this.handleUpdateTitle.bind(this)}
+        handleUpdateTime={this.handleUpdateTime.bind(this)}
+        handleUpdateBody={this.handleUpdateBody.bind(this)}
+        updatetitle={this.state.updatetitle}
+        updatetime={this.state.updatetime}
+        updatebody={this.state.updatebody}
       />
     );
   }
