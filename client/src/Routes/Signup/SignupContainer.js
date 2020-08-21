@@ -51,7 +51,7 @@ export default class extends React.Component {
         });
       }
     } else if ([e.target.name][0] === "inputemail") {
-      console.log("이메일유효성검사");
+      // console.log("이메일유효성검사");
       let reg_email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
       if (reg_email.test(e.target.value)) {
         this.setState({
@@ -63,7 +63,7 @@ export default class extends React.Component {
         });
       }
     } else if ([e.target.name][0] === "inputpassword") {
-      console.log("비밀번호유효성검사");
+      // console.log("비밀번호유효성검사");
       let reg_password = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
       if (reg_password.test(e.target.value)) {
         this.setState({
@@ -76,7 +76,7 @@ export default class extends React.Component {
         });
       }
     } else if ([e.target.name][0] === "inputpasswordcheck") {
-      console.log("비밀번호재확인");
+      // console.log("비밀번호재확인");
       const { inputpassword } = this.state;
 
       if (inputpassword === e.target.value) {
@@ -90,7 +90,7 @@ export default class extends React.Component {
       }
     }
   };
-  handleErrorMessage(){
+  handleErrorMessage() {
     this.setState({
       checkMessageEmail: '이메일이 중복이에요'
     })
@@ -99,7 +99,7 @@ export default class extends React.Component {
     const { inputname, inputemail, inputpassword } = this.state;
 
     return userApi.signup(inputname, inputemail, inputpassword)
-      .then(res =>  res)
+      .then(res => res)
       .catch(e => {
         this.handleErrorMessage();
       })

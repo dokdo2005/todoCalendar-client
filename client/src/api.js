@@ -46,7 +46,9 @@ export const todoApi = {
   // 삭제하기
   deleteOne: (id) => {
     api.delete("/calendar", {
-      id,
+      data: {
+        id: id
+      }
     });
   },
   // 전체 삭제하기
