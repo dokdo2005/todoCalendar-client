@@ -23,7 +23,6 @@ class App extends React.Component {
       todoListData = await todoApi.getAll();
     }
     if (todoListData) {
-      console.log("enter");
       this.setState({
         todoList: todoListData.data,
       });
@@ -32,7 +31,6 @@ class App extends React.Component {
 
   async updateTodoData() {
     let todosList = await todoApi.getAll();
-
     this.setState({
       todoList: todosList.data,
     });
@@ -65,9 +63,9 @@ class App extends React.Component {
     });
   };
 
-  handleClearOne = async (id) => {
-    console.log(typeof id);
-    let modifiedData = await todoApi.deleteOne(id);
+  handleClearOne = (id) => {
+    todoApi.deleteOne(id);
+    this.updateTodoData();
   }
 
   render() {

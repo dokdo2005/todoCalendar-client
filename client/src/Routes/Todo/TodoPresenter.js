@@ -28,7 +28,6 @@ const TodoList = styled.ul`
   display: inline-block;
 `;
 const TodoAddBtnSection = styled.div`
-  /* background-color: red; */
   position: absolute;
   right: 0;
   top: 0;
@@ -86,7 +85,7 @@ const TodoPresenter = ({
                   <TodoList>
                     {todoList.map((item) => (
                       <Todo
-                       updateTodoData={updateTodoData}
+                        updateTodoData={updateTodoData}
                         handleUpdateTitle={handleUpdateTitle}
                         handleUpdateTime={handleUpdateTime}
                         handleUpdateBody={handleUpdateBody}
